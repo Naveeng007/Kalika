@@ -1,0 +1,36 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+#Navbar{
+    border: goldenrod solid 3px;
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    background-color: gray;
+    z-index: 100;
+}
+#Eventbar{
+    border: goldenrod solid 3px;
+    height: 100vh;
+    width:240px;
+    position: fixed;
+    margin-top: 40px;
+}
+#Content{
+    border: goldenrod solid 3px;
+    height: 100vh;
+    width:400px;
+    /* position: fixed; */
+    margin-top: 40px;
+    margin-left: 240px;
+}
+#MessageBar{
+    border: rgb(218, 32, 72) solid 3px;
+    height: 100vh;
+    width:1fr;
+    position: fixed;
+    /* margin-top: 40px; */
+    margin-left: 640px;
+}

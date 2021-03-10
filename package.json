@@ -1,0 +1,23 @@
+{
+  "name": "prakriti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naveeng007/Prakriti.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naveeng007/Prakriti/issues"
+  },
+  "homepage": "https://github.com/Naveeng007/Prakriti#readme",
+  "dependencies": {
+    "live-server": "^1.2.1",
+    "yarn": "^1.22.10"
+  }
+}
