@@ -33,6 +33,12 @@ module.exports=(env)=>{
                 'css-loader',
                 'sass-loader',//it will use node-sass loader in background
             ]
+        },{
+            test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+            use:[
+                'url-loader?limit=100000' ,
+                
+            ] 
         }]
     },
     mode: 'development',

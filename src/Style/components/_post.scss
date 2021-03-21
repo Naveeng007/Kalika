@@ -1,0 +1,169 @@
+.post-textarea-text{
+   margin-top: 5px;
+  
+}
+
+.post-textarea{
+   border-bottom:1px solid rgb(1,1,1,0.1);
+}
+
+.like{
+   display: flex;
+   height: 20px;
+}
+
+.like-count{
+   margin-top: 0px;
+}
+
+
+ .post-top{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+
+   /*justify-content: space-between;*/
+   /*height: 100%;*/
+   // border: 2px solid green;
+}
+.post-top-photo{
+   // border: 2px solid rgb(255, 0, 0);
+   /*border: 2px solid red;*/
+   height: 40px;
+   width: 40px;
+   margin-top: 0px;
+   margin-right: 5px;
+   margin-bottom: 0px;
+   /*overflow: hidden;*/
+   /*margin: 0px 5px;*/
+   // border: 2px solid black;
+   border-radius: 50%;
+}
+.username-text{
+   // display: flex;
+   // align-self: start;
+   margin-top: 0px;
+   
+   margin-left: 2px;
+
+   // border: 2px solid rgb(255, 0, 191);
+}
+
+.post-top-delete{
+
+   margin-right: 0px;
+   // margin-left: 70%;
+   /*border: 2px solid blue;*/
+}
+
+.post-top-username-div{
+   display: flex;
+   flex-direction: row;
+   // padding-left: 5px;
+   // margin-left: 0px;
+   // border: 2px solid blue;
+}
+
+.post-input-box{
+   width: 90%;
+   word-wrap: all;
+   margin: 5px;
+   height: 50px;
+   /*border: 2px solid blue;*/
+
+
+}
+
+.post-image{
+   display: flex;
+   object-fit: cover;
+max-height: 300px;
+max-width: 500px;
+// border: 2px solid rgb(255, 0, 0);
+border-radius: 10px;
+margin: 5px;
+}
+
+.post-feedbacks{
+   display: flex;
+   /*border: 2px solid blue;*/
+}
+
+.like, .dislike{
+   display: flex;
+   height: 20px;
+   margin: 10px;	
+}
+
+
+
+.page{
+   background-color: #f0f2f5;
+   display: flex;
+   width:40%;
+   margin-top: 2px;
+   /*justify-content: center;*/
+   flex-direction: column;
+   overflow: scroll;
+   height: 100%;//% to vh
+   // border: 12px solid blue;
+}
+
+.post{
+   display: flex;
+   background-color: #ffffff;
+   /*justify-content: center;*/
+   flex-direction: column;
+   /*min-width: 350px;*/
+   margin:10px;
+   padding: 10px;
+//    height: 300px;
+   border-radius: 14px;
+
+   // border: 2px solid blue;
+
+}
+
+
+
+.input-wrap {
+  position: relative;
+}
+.input-wrap .input {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.width-machine {
+  /*   Sort of a magic number to add extra space for number spinner */
+  padding: 0 1rem;
+}
+
+
+.create-post-textarea{
+   margin: 5px;
+}
+
+
+
+
+textarea {
+   resize: none;
+ }
+ textarea {
+    margin-top: 10px;
+   height: 100px;;
+   border-radius: 10px;
+   width: 100%;
+   outline:none;
+  
+ }
+
+ .submit-post{
+    width: 80px;
+    height:30px;
+    border:none;
+    border-radius:5px;
+    color: white;
+    background-color: #1877F2;
+ }
