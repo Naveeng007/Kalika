@@ -21,7 +21,8 @@
    display: flex;
    flex-direction: row;
    justify-content: space-between;
-
+   border-bottom: 1px solid rgb(1,1,1,0.1);
+  padding:4px;
    /*justify-content: space-between;*/
    /*height: 100%;*/
    // border: 2px solid green;
@@ -102,6 +103,7 @@ margin: 5px;
    display: flex;
    width:40%;
    margin-top: 2px;
+   
    /*justify-content: center;*/
    flex-direction: column;
    overflow: scroll;
@@ -114,8 +116,9 @@ margin: 5px;
    background-color: #ffffff;
    /*justify-content: center;*/
    flex-direction: column;
-   /*min-width: 350px;*/
+   // min-width: 350px;
    margin:10px;
+
    padding: 10px;
 //    height: 300px;
    border-radius: 14px;
@@ -126,18 +129,18 @@ margin: 5px;
 
 
 
-.input-wrap {
-  position: relative;
-}
-.input-wrap .input {
-  position: absolute;
-  width: 100%;
-  left: 0;
-}
-.width-machine {
-  /*   Sort of a magic number to add extra space for number spinner */
-  padding: 0 1rem;
-}
+// .input-wrap {
+//   position: relative;
+// }
+// .input-wrap .input {
+//   position: absolute;
+//   width: 100%;
+//   left: 0;
+// }
+// .width-machine {
+//   /*   Sort of a magic number to add extra space for number spinner */
+//   padding: 0 1rem;
+// }
 
 
 .create-post-textarea{
@@ -147,10 +150,10 @@ margin: 5px;
 
 
 
-textarea {
+.submit-post-textarea{
    resize: none;
  }
- textarea {
+ .submit-post-textarea {
     margin-top: 10px;
    height: 100px;;
    border-radius: 10px;

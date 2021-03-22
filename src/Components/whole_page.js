@@ -2,6 +2,7 @@ import React from 'react'
 import Activity from './ShowActivity'
 import Post from './ShowPost'
 import Message from './message'
+import Chat from './chat'
 class WholePage extends React.Component {
 
    render() {
@@ -9,7 +10,8 @@ class WholePage extends React.Component {
            <div className="Whole_page">
                <Activity/>
                <Post/>
-               <Message/>
+               {/* {false&&<Message/>} */}
+               <Chat/>
            </div>
        )
    }

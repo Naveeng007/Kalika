@@ -13,8 +13,8 @@ class Activity extends React.Component {
                 <div className="post">
                     
 
-                    <div className="post-textarea">
-						<textarea className="textarea"  placeholder="hi">
+                <div className="create-post-textarea">
+						<textarea className="submit-post-textarea"  placeholder="hi">
 						</textarea>
 					</div>
 
