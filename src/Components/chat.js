@@ -32,29 +32,57 @@ class Chat extends React.Component{
 					</div>
 
                     <div className="chat-box">
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user1-message">
+                        <p > I’m currently Student </p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
+                        <div className="user2-message">
+                        <p > I’m currently Student</p>
+                        <h5>Satruday 22 july 10 am</h5>
+                        </div>
                         
-                        <p className="user2-message" >hsdfdfsdfello </p>
-                        <p className="user2-message" >hsdfdfsdfello </p>
-                        <p className="user2-message" >hsdfdfsdfello </p>
-                        <p className="user2-message" >hsdfdfsdfello </p>
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
-                        <p className="user1-message"> I’m currently Student of ... Delhi Technological University (2018-2022)
-🌱 I’m currently learning ...Reactjs
-💬 Ask me about ...Anything sdfsdf</p>
+                        
+                       
                         
                     </div>
 

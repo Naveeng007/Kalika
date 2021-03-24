@@ -1,6 +1,7 @@
 //teaching webpack to do these things
 const path=require('path')
 var webpack = require('webpack');
+// import webpack from 'webpack'
 
 module.exports=(env)=>{
     console.log(env)
@@ -36,8 +37,7 @@ module.exports=(env)=>{
         },{
             test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
             use:[
-                'url-loader?limit=100000' ,
-                
+                'url-loader?limit=100000' 
             ] 
         }]
     },

@@ -4,9 +4,6 @@ class Message extends React.Component{
         return (
             <div className="Messages">
                      <h2 className="title">Messages</h2>
-                
-                   
-
                      <div className="Online-users">
                         <div>
                             <img className="post-top-photo" src={'./images/chasma.jpg'}/>

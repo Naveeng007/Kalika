@@ -170,3 +170,16 @@ margin: 5px;
     color: white;
     background-color: #1877F2;
  }
+
+ .post-name-time{
+    display:flex;
+    flex-direction:column;
+    p{
+       margin: 0px;
+     
+    }
+    h5{
+      color:$fade-color;
+      margin: 0px;
+    }
+ }

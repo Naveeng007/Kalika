@@ -40,12 +40,30 @@
    
 }
 .user1-message{
-    background-color:$background;
+   
     min-height: 40px;
-    border-radius:10px;
+    display: flex;
+    flex-direction:column;
+   
     padding:5px;
     margin: 5px;
-    margin-top:20px;
+    margin-bottom: 0px;
+    align-items:flex-start;
+    margin-top:5px;
+    p{
+        background-color:#0CAFFF;
+        margin-bottom: 0px;
+        padding: 5px;
+        border-radius:10px;
+    }
+    h5{
+        margin-top: 4px;
+        // align-self: flex-end;
+        color:rgb(1,1,1,0.5);
+        margin-bottom: 0px;
+        
+    }
+    color:white;
 }
 .chat-bar{
     display:flex;
@@ -60,13 +78,30 @@
 }
 
 .user2-message{
-    background-color:$button-color;
     min-height: 40px;
+    display: flex;
+    flex-direction:column;
     border-radius:10px;
     padding:5px;
     margin: 5px;
-    margin-top:20px;
-    color:white;
+    margin-bottom: 0px;
+    // justify-content:right;
+    align-items:flex-end;
+    margin-top:5px;
+    p{
+        background-color:$background;
+        margin-bottom: 0px;
+        padding: 5px;
+        border-radius:10px;
+    }
+    h5{
+        margin-top: 0px;
+        align-self: flex-end;
+        color:rgb(1,1,1,0.5);
+        margin-bottom: 0px;
+    }
+   
+    
     
     
 }
