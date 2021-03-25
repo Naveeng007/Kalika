@@ -40,7 +40,7 @@ return{
 
 const mapStateToProps=(state)=>{
     // console.log('States',state)
-    console.log('checkpoint')
+    console.log('ShowPost state',state.Post)
     return{
         Post:state.Post//adding expenses props to ExpenseList
     }

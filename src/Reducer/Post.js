@@ -3,23 +3,23 @@ const Posts=[]
 
 const PostReducer=(state=Posts,action)=>{
     switch(action.type){
-        case 'Liked':
+        case 'LikePost':
             let change=0;
-            
-            return {
-                ...state,
-                Likes:state.Likes+1,
-                Dislikes:state.Dislikes+change
-            }
-            
+                return state.filter((post)=>{
+                if(action.PostId===post.PostId)
+                    {
+                        console.log(post)
+                    }
+            })
 
-        case "Disliked":
+            
+        case "DislikePost":
              change=0;
             //if liked make make liked=0
-            return{
+            const Dislike=state.Dislikes
+            return {
                 ...state,
-                Dislikes:state.Dislikes+1,
-                Likes:state.Likes+change
+                Dislikes:Dislike.push(action.UserId),
             }
             
         case "CreatePost":
@@ -36,6 +36,7 @@ const PostReducer=(state=Posts,action)=>{
         case "EditPost"://to be implemented
             return state;
         case "SetPost":
+            console.log('SetPost',action.Post)
             return action.Post
         default: 
             return state;
