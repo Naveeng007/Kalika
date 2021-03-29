@@ -5,15 +5,22 @@ import {F_DeletePost,F_LikePost,F_DislikePost} from '../Action/Post'
 class PostListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
-        console.log('props from Listitem',props)
-        console.log('props from Listitem',props.Likes)
-        let count=0;
-        // props.Likes.forEach()
-        // const state={
-        //     Likes:like,
-        //     Dislikes:dislike
-        // }
+        // console.log('props from Listitem inner',props.Likes.length)
         
+        let isLiked=false;
+        props.Likes.forEach((like)=>{
+            if(props.CurrentUserId===like.UserId)
+            {
+                isLiked=true;
+                
+            }
+        })
+         this.state={
+            Likes:props.Likes.length,
+            isLiked
+        }
+
+
     }
 
     DeletePost=(e)=>{
@@ -22,16 +29,17 @@ class PostListitem extends React.Component {
     }
 
     onLikePost=()=>{
-        console.log('Delete Post CLicked',this.props.PostId)
+        console.log('Like Post CLicked',this.state.Likes)
         this.props.F_LikePost(this.props.PostId)
     }
     onDislikePost=()=>{
-        console.log('Delete Post CLicked',this.props.PostId)
+        console.log('Dislike Post CLicked',this.props.PostId)
         this.props.F_DislikePost(this.props.PostId)
     }
     render() {
         return (
-            <div className="post">
+            <div className={`post${this.props.indx+1}`}>
+                {console.log('index',this.props.indx+1)}
                 <div className="post-top">
                     <div className="post-top-username-div">
                         <img className="post-top-photo" src={'./images/chasma.jpg'}/>
@@ -54,9 +62,9 @@ class PostListitem extends React.Component {
                 <div className="post-feedbacks">
                     <div className="like">
                             {/* <button className="like-button">Like</button> */}
-                            <input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/like.png" />
-                            {false&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/liked.png" />}
-                            <p className="like-count">{}</p>
+                            {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/like.png" />}
+                            {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/liked.png" />}
+                            <p className="like-count">{this.state.Likes}</p>
                     </div>
 
                     <div className="dislike">

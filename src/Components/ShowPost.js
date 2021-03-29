@@ -8,12 +8,14 @@ class Post extends React.Component {
     constructor(props) {
         console.log('Props from ShowPost',props)
         super(props)
+      
+        
     }
     onSubmit=(Post)=>{
         this.props.FCreatePost(Post)
-        // console.log('Pro',props)
-        // this.props.history.push('/dashboard')
     }
+
+ 
 
    render() {
        return (
@@ -21,9 +23,12 @@ class Post extends React.Component {
                <CreatePost
                 onSubmit={this.onSubmit}/>
 
+            {console.log("from post PostListitem showpost",this.props.Post)}
+
                 {this.props.Post.map((post)=>{
-                    // console.log("hello",post)
-                    return  <PostListitem key={post.PostId} {...post}/>
+                   
+                    // console.log('incrment',this.state.i)
+                    return  <PostListitem key={post.PostId+`${post.Likes.length}`}  {...post} />//key updated because it will update that
                 })}
               
            </div>
@@ -39,10 +44,10 @@ return{
 };
 
 const mapStateToProps=(state)=>{
-    // console.log('States',state)
+    console.log('States',state)
     console.log('ShowPost state',state.Post)
     return{
-        Post:state.Post//adding expenses props to ExpenseList
+        Post:filter(state.Post)//adding expenses props to ExpenseList
     }
 }
 export default connect(mapStateToProps,MapDispatchToProps)(Post) 

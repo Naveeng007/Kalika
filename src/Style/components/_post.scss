@@ -1,3 +1,8 @@
+$post_no:1;
+$bcolor:white;
+$textcolor:black;
+$colors-list:#20B2AA #FF69B4  #00BFFF #FEBE10 #DE3163; 
+//user id{idno%5)
 .post-textarea-text{
    margin-top: 5px;
   
@@ -103,28 +108,44 @@ margin: 5px;
    display: flex;
    width:40%;
    margin-top: 2px;
-   
-   /*justify-content: center;*/
    flex-direction: column;
    overflow: scroll;
-   height: 100%;//% to vh
-   // border: 12px solid blue;
+   height: 100%;
 }
+
+ 
+@each $current-color in $colors-list {
+   $i: index($colors-list, $current-color);
+   .post#{$i}{
+      display: flex;
+      background-color: $current-color;
+      color:white;
+      flex-direction: column;
+      margin:10px;
+      padding: 10px;
+      border-radius: 14px;
+   }
+}
+
 
 .post{
    display: flex;
-   background-color: #ffffff;
-   /*justify-content: center;*/
+   background-color: white;
+   color:black;
    flex-direction: column;
-   // min-width: 350px;
    margin:10px;
-
    padding: 10px;
-//    height: 300px;
    border-radius: 14px;
+}
 
-   // border: 2px solid blue;
-
+.page-Activity{
+   background-color: #f0f2f5;
+   display: flex;
+   width:30%;
+   margin-top: 2px;
+   flex-direction: column;
+   overflow: scroll;
+   height: 100%;
 }
 
 
@@ -179,7 +200,7 @@ margin: 5px;
      
     }
     h5{
-      color:$fade-color;
+      color:white;
       margin: 0px;
     }
  }

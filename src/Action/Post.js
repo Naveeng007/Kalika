@@ -1,5 +1,6 @@
 import Post from '../filter/Post';
 import database from '../firebase/firebase'
+import moment from 'moment'
 export const CreatePost=(Post={})=>({
     type:'CreatePost',
     Post
@@ -14,25 +15,16 @@ export const FCreatePost=(PostData={})=>{
         Photo='',
         CreatedAt = 0,
         Likes=[],
-        Dislikes=[]
+        Dislikes=[],
+        indx=0
       }=PostData;
   
-      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes};
-      console.log("CreatePost", Post);
-      // var indx=-1;
-      // for(let i=0;i<Post.Likes.length;i++)
-      // {
-      //   if(Post.Likes[i]==UserId)
-      //       {
-      //         console.log('Like ID FOUND',i);
-      //         indx=i;
-      //         break;
-      //       }
-      // }
+      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx};
+      Post.CreatedAt=moment().valueOf()
       database.ref(`Posts`).push(Post).then((ref)=>{
        dispatch(CreatePost({
         PostId:ref.key,//check it is post id or not
-        ...Post
+        ...Post,
        }))
       })
     }
@@ -60,18 +52,19 @@ export const EditPost=({Photo,Text,UserId,CreatedAt}={})=>({
     CreatedAt
 })
 
-export const LikePost=(UserId={},PostId={})=>({
+export const LikePost=(UserId={},LikeId={},PostId={})=>({
     type:'LikePost',
-    PostId,
-    UserId
+    LikeId,
+    UserId,
+    PostId
 })
 
 export const F_LikePost=(PostId={})=>{
   return (dispatch,getState)=>{
     const UserId=getState().auth.uid;
-    return database.ref(`Posts/${PostId}/Likes`).push(UserId).then(()=>{
-      console.log('Post Liked',PostId);
-      dispatch(LikePost(UserId,PostId));//also check without braces
+    return database.ref(`Posts/${PostId}/Likes`).push(UserId).then((e)=>{
+      console.log('Post Liked',e.key);
+      dispatch(LikePost(UserId,e.key,PostId));//also check without braces
     })
   }
 }
@@ -100,48 +93,40 @@ export const Comment=({UserId,PostId,Comment}={})=>({
     Comment
 
 })
-export const SetPost=(Post)=>({
+export const SetPost=(Post={})=>({
     type:'SetPost',
-    Post
+    Post,
+    
 })
 
-const give_likes=(PostId)=>{
-    return database.ref(`Posts/${PostId}/Likes`).once('value').then((snapshot)=>{
-      const Likes=[]
-      console.log('ayare')
-      snapshot.forEach((snapshotChild)=>{
-          console.log('sssssss',snapshotChild.val())
-        Likes.push({
-          LikeId:snapshotChild.key,
-          UserId:snapshotChild.val(),
-        })
-      })
-      return Likes
-    })
-    
-  }
-
-
 export const F_SetPost=()=>{
-    return (dispatch)=>{
+    return    (dispatch,getState)=>{
+      const Post=[]
+
         return  database.ref(`Posts`).once('value').then((snapshot)=>{
-          const Post=[]
-          snapshot.forEach((snapshotChild)=>{
-           give_likes(snapshotChild.key).then((Likes)=>{
-             console.log('sddddddddd',Likes)
+            let i=0;
+           snapshot.forEach((snapshotChild)=>{
+            //  console.log('l')
+             const Likes=[]
+              if(snapshotChild.val().Likes)
+                Object.entries(snapshotChild.val().Likes).map(item => {
+                  Likes.push({
+                    LikeId:item[0],
+                    UserId:item[1],
+                    PostId:snapshotChild.key
+                  })
+                })
              Post.push({
               PostId:snapshotChild.key,
               ...snapshotChild.val(),
-              Likes
-              
+              Likes,
+              indx:i%5
             })
-           }).then(()=>{
-            console.log('qqqqqqqq',Post)
-            dispatch(SetPost(Post))
-           })
-           
+            i++;
           })
-         
+           console.log('from set Post',Post)
+           dispatch(SetPost(Post))
         })
+        
     }
   }

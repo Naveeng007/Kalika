@@ -5,13 +5,21 @@ const PostReducer=(state=Posts,action)=>{
     switch(action.type){
         case 'LikePost':
             let change=0;
-                return state.filter((post)=>{
-                if(action.PostId===post.PostId)
-                    {
-                        console.log(post)
-                    }
+            //    const newstate= state
+            //    console.log('from like Reducer')
+            //    newstate[action.PostId] = action.UserId
+            // const newstate= []
+            return state.map((post)=>{
+                if(post.PostId===action.PostId){
+                    // console.log(post.PostId,'----',action)
+                    post.Likes.push({
+                        LikeId: action.LikeId,
+                        UserId: action.UserId,
+                        PostId: action.PostId
+                    })
+                }
+                return post
             })
-
             
         case "DislikePost":
              change=0;
@@ -23,9 +31,12 @@ const PostReducer=(state=Posts,action)=>{
             }
             
         case "CreatePost":
+            console.log('createing post',state);
+            action.Post.indx=(state.length+1)%5
            return [
                ...state,
-               action.Post
+               action.Post,
+            //    indx=state.length+1
            ]
         case "DeletePost":
             console.log("State from Post Reducer",state)
@@ -36,13 +47,9 @@ const PostReducer=(state=Posts,action)=>{
         case "EditPost"://to be implemented
             return state;
         case "SetPost":
-            console.log('SetPost',action.Post)
-            return action.Post
+           return action.Post
         default: 
             return state;
-            
-
-
     }
 }
 

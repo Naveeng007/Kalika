@@ -29,14 +29,14 @@ const RenderApp=()=>{
 
 
 
-ReactDOM.render(jsx, document.getElementById('app')
-    )
+// ReactDOM.render(jsx, document.getElementById('app')
+//     )
     firebase.auth().onAuthStateChanged((user)=>{
  
         if(user){
-            console.log("loged in")
+            console.log("........................loged in")
             store.dispatch(login(user.uid))
-            RenderApp();
+            // RenderApp();
 
             // history.push('/dashboard')
             const state=store.getState();

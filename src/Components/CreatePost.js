@@ -30,6 +30,8 @@ class CreatePost extends React.Component {
                 Text:this.state.Text,
                 CreatedAt:this.state.CreatedAt.valueOf()
             })
+
+            this.setState(()=>({Text:''}))
         }
     }
 

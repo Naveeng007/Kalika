@@ -1,28 +1,29 @@
-const Posts=[]
-const PostState={
-    PostId,
-    UserId,
-    Text,
-    Photo,
-    CreatedOn,
-    username,
-    
-}={}
+const Activity=[]
 
-const ActivityReducer=(state=PostState,action)=>{
+const ActivityReducer=(state=Activity,action)=>{
     switch(action.type){
-        case "CreatePost":
-            Posts.push(state);
-            break;
-        case "DeletePost":
-            return state.map((post)=>{
-                post.PostId!=action.PostId
-            })
-        case "EditPost":
-            return state
-        default:
+        
+        case "CreateActivity":
+            console.log('createing Activity',state);
+            action.Activity.indx=(state.length+1)%5
+           return [
+               ...state,
+               action.Activity,
+            //    indx=state.length+1
+           ]
+        case "DeleteActivity":
+            console.log("State from Activity Reducer",state)
+            console.log('Actioin from DeleteActivity',action)
+            return state.filter(({ActivityId})=> ActivityId!=action.ActivityId)//this should automatically return
+            
+        
+        case "EditActivity"://to be implemented
+            return state;
+        case "SetActivity":
+           return action.Activity
+        default: 
             return state;
     }
 }
 
-export default ActivityReducer
+export default ActivityReducer;
