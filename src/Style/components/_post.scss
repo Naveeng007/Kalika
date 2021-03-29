@@ -141,7 +141,7 @@ margin: 5px;
 .page-Activity{
    background-color: #f0f2f5;
    display: flex;
-   width:30%;
+   width:20%;
    margin-top: 2px;
    flex-direction: column;
    overflow: scroll;
@@ -183,6 +183,15 @@ margin: 5px;
   
  }
 
+ .submit-post-Title{
+   resize: none;
+   margin-top: 10px;
+   height: 30px;;
+   border-radius: 10px;
+   width: 100%;
+   outline:none;
+ }
+
  .submit-post{
     width: 80px;
     height:30px;
@@ -200,7 +209,11 @@ margin: 5px;
      
     }
     h5{
-      color:white;
+      color:$fade-color;
       margin: 0px;
+    }
+    h6{
+       color:$fade-color;
+       margin: 0px;
     }
  }

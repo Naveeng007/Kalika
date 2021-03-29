@@ -14,11 +14,13 @@ export const FCreateActivity=(ActivityData={})=>{
         Text = '',//these are default values of parameters
         Photo='',
         CreatedAt = 0,
+        Title='',
         indx=0
       }=ActivityData;
 
-      const Activity={Text ,Photo ,CreatedAt,UserId,indx};
+      const Activity={Text ,Photo ,CreatedAt,UserId,indx,Title};
       Activity.CreatedAt=moment().valueOf()
+      console.log('from activity action',Activity);
       database.ref(`${UserId}/Activity`).push(Activity).then((ref)=>{
        dispatch(CreateActivity({
         ActivityId:ref.key,//check it is post id or not

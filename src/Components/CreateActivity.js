@@ -7,6 +7,7 @@ class CreateActivity extends React.Component {
         console.log('props',this.props)
 
         this.state={
+            Title: props.Activity?props.Activity.Title:'',
             Text:props.Activity?props.Activity.Text:'',
             CreatedAt:props.Activity?props.Activity.CreatedAt:moment(),
             error:''
@@ -19,19 +20,26 @@ class CreateActivity extends React.Component {
         this.setState(()=>({Text}))
     }
 
+    onTitleChange=(event) =>{
+        const Title=event.target.value
+        this.setState(()=>({Title}))
+    }
+
     onSubmit=(e)=>{
         e.preventDefault()
-        if(!this.state.Text){
+        if(!this.state.Text||!this.state.Title){
             this.setState(()=>({error:'Text is required'}))
         }
         else{
             this.setState(()=>({error:''}))//this function must retur
             this.props.onSubmit({
                 Text:this.state.Text,
+                Title:this.state.Title,
                 CreatedAt:this.state.CreatedAt.valueOf()
             })
 
             this.setState(()=>({Text:''}))
+            this.setState(()=>({Title:''}))
         }
     }
 
@@ -40,14 +48,18 @@ class CreateActivity extends React.Component {
         return(
             <div className="post">
                 {this.state.error&&<p>{this.state.error}</p>}
-                    <div className="post-top">
-						<div className="post-top-username-div">
-                            <img className="post-top-photo" src={'./images/chasma.jpg'}/>
-							<p className="username-text">Naveen</p>
-						</div>
-					</div>
+                   
 
                     <div className="create-post-textarea">
+
+                        <textarea 
+                        className="submit-post-Title"  
+                        placeholder="Title Here"
+                        value={this.state.Title}
+                        onChange={this.onTitleChange}
+                        >
+						</textarea>
+
 						<textarea 
                         className="submit-post-textarea"  
                         placeholder="hi"

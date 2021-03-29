@@ -4,7 +4,7 @@ import ActivityListitem from './Activitylistitem'
 import CreateActivity from './CreateActivity'
 import filter from '../filter/Post'
 import {connect} from 'react-redux'
-class Activity extends React.Component {
+class Activities extends React.Component {
     constructor(props) {
         console.log('Props from ShowActivity',props)
         super(props)
@@ -12,6 +12,7 @@ class Activity extends React.Component {
         
     }
     onSubmit=(Activity)=>{
+        console.log('activity create submitted',Activity)
         this.props.FCreateActivity(Activity)
     }
 
@@ -20,18 +21,17 @@ class Activity extends React.Component {
    render() {
        return (
            <div className="page-Activity">
+                   <h2 className="title">Personal Notes</h2>
                <CreateActivity
                 onSubmit={this.onSubmit}/>
                 
-            {/* {console.log("from Activity ActivityListitem showActivity",this.props.Activity)}
-                if(this.props.Activity)
+            {console.log("from Activity ActivityListitem ",this.props.Activity)}
+                {/* if(this.props.Activity) */}
                 {this.props.Activity.map((activity)=>{
                    
                     // console.log('incrment',this.state.i)
-                    return  <ActivityListitem key={activity.ActivityId+`${activity.Likes.length}`}  {...activity} />//key updated because it will update that
-                })} */}
-                <p>hello</p>
-              
+                    return  <ActivityListitem key={activity.ActivityId}  {...activity} />//key updated because it will update that
+                })}
            </div>
        )
    }
@@ -51,4 +51,4 @@ const mapStateToProps=(state)=>{
         Activity:filter(state.Activity)//adding expenses props to ExpenseList
     }
 }
-export default connect(mapStateToProps,MapDispatchToProps)(Activity) 
+export default connect(mapStateToProps,MapDispatchToProps)(Activities) 
