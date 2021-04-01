@@ -4,7 +4,7 @@ import moment from 'moment'//for better understanding check official website
 class CreatePost extends React.Component {
     constructor(props) {
         super(props);
-        // console.log('props',this.props)
+        // console.log('props from Create Post',props)
 
         this.state={
             Text:props.Post?props.Post.Text:'',
@@ -42,8 +42,8 @@ class CreatePost extends React.Component {
                 {this.state.error&&<p>{this.state.error}</p>}
                     <div className="post-top">
 						<div className="post-top-username-div">
-                            <img className="post-top-photo" src={this.props.User.ImgURL}/>
-							<p className="username-text">{this.props.User.Username}</p>
+                            <img className="post-top-photo" src={this.props.imgUrl}/>
+							<p className="username-text">{this.props.Username}</p>
 						</div>
 					</div>
 

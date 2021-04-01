@@ -9,20 +9,7 @@ const CreateUser =(User={})=>({
 
 export const F_CreateUser =(User={})=>{
     return (dispatch,getState)=>{
-        // const {
-        //     Id,
-        //     Username='',
-        //     Email='',
-        //     ImgURL='',
-        //     UserId
-        // }=UserInfo;
-        // const User={ 
-        //     Id,
-        //     Username,
-        //     Email,
-        //     ImgURL,
-        //     UserId};
-
+        console.log('New User',User)
         database.ref(`Users`).push(User).then((ref)=>{
             dispatch(CreateUser(
                 // Id=ref.key,

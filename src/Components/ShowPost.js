@@ -9,14 +9,14 @@ class Post extends React.Component {
         console.log('Props from ShowPost',props)
         super(props)
         this.state={
-            ImgURL:'',
+            imgUrl:'',
             Username:'',
             Email:'',
         }
         props.Users.forEach(user =>{
             console.log(user.UserId,'=======',props.uid,user)
             if(user.UserId===props.uid){
-                this.state.ImgURL=user.imgUrl,
+                this.state.imgUrl=user.imgUrl,
                 this.state.Username=user.Username
                 this.state.Email=user.Email
                 
@@ -24,7 +24,6 @@ class Post extends React.Component {
                 // this.setState({Email:user.Email})
             }
         })
-      
         
     }
     onSubmit=(Post)=>{
@@ -37,14 +36,16 @@ class Post extends React.Component {
        return (
            <div className="page">
                <CreatePost
-                onSubmit={this.onSubmit} User={this.state}/>
+                Username={this.state.Username}
+                imgUrl={this.state.imgUrl}
+                onSubmit={this.onSubmit} />
 
             {/* {console.log("from post PostListitem showpost",this.props.Post)} */}
 
                 {this.props.Post.map((post)=>{
                    
                     // console.log('incrment',this.state.i)
-                    return  <PostListitem key={post.PostId+`${post.Likes.length}`}  {...post} User={this.state} />//key updated because it will update that
+                    return  <PostListitem key={post.PostId+`${post.Likes.length}`}  {...post}  />//key updated because it will update that
                 })}
               
            </div>
@@ -64,8 +65,8 @@ const mapStateToProps=(state)=>{
     // console.log('ShowPost state',state.Post)
     return{
         Post:filter(state.Post),
-        Users:state.Chat,
-        uid:state.auth.uid//adding expenses props to ExpenseList
+        uid:state.auth.uid,//adding expenses props to ExpenseList
+        Users:state.Chat
     }
 }
 export default connect(mapStateToProps,MapDispatchToProps)(Post) 

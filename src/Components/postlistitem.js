@@ -5,7 +5,7 @@ import {F_DeletePost,F_LikePost,F_DislikePost} from '../Action/Post'
 class PostListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
-        console.log('props from Listitem inner',props)
+        // console.log('props from Listitem inner',props)
         
         let isLiked=false;
         props.Likes.forEach((like)=>{
@@ -42,9 +42,9 @@ class PostListitem extends React.Component {
                 {/* {console.log('index',this.props.indx+1)} */}
                 <div className="post-top">
                     <div className="post-top-username-div">
-                        <img className="post-top-photo" src={this.props.User.ImgURL}/>
+                        <img className="post-top-photo" src={this.props.imgUrl}/>
                         <div className="post-name-time">
-                            <p className="username-text">{this.props.User.Username}</p>
+                            <p className="username-text">{this.props.Username}</p>
                             <h5 className="username-text">{format(new Date(this.props.CreatedAt), 'PPPP') }</h5>
                         </div>
                         

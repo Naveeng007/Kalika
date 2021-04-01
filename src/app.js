@@ -82,8 +82,8 @@ const RenderApp=()=>{
                 }
             })
 
-                store.dispatch(F_SetPost())
-                store.dispatch(F_SetActivity())
+           await     store.dispatch(F_SetPost())//await because when new user is created,then it must run not before
+                    store.dispatch(F_SetActivity())
            
             console.log('22222',store.getState())
                 RenderApp();

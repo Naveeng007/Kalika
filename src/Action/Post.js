@@ -10,6 +10,21 @@ export const CreatePost=(Post={})=>({
 export const FCreatePost=(PostData={})=>{
     return (dispatch,getState)=>{//we are able to return dispatch due to redux-thunk
       const UserId=getState().auth.uid;
+      var imgUrl='';
+      var Email='Your Email';
+      var Username='Your Name';
+
+      const UserList=getState().Chat;
+
+      UserList.forEach((user)=>{
+        // console.log(user.UserId,'--hi--',UserId)
+        if(user.UserId===UserId){
+            imgUrl=user.imgUrl;
+            Username=user.Username;
+            Email=user.Email;
+        }
+      })
+
       const {
         Text = '',//these are default values of parameters
         Photo='',
@@ -19,7 +34,7 @@ export const FCreatePost=(PostData={})=>{
         indx=0
       }=PostData;
   
-      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx};
+      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx,imgUrl,Username,Email};
       Post.CreatedAt=moment().valueOf()
       database.ref(`Posts`).push(Post).then((ref)=>{
        dispatch(CreatePost({
