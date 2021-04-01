@@ -5,7 +5,7 @@ import {F_DeleteActivity} from '../Action/Activity'
 class ActivityListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
-        console.log('props from Activity inner',props)
+        // console.log('props from Activity inner',props)
         
     }
 
@@ -17,7 +17,7 @@ class ActivityListitem extends React.Component {
     render() {
         return (
             <div className={`post${this.props.indx+1}`}>
-                {console.log('index',this.props.indx+1)}
+                {/* {console.log('index',this.props.indx+1)} */}
                 <div className="post-top">
                     <div className="post-top-username-div">
                         {/* <img className="post-top-photo" src={'./images/chasma.jpg'}/> */}

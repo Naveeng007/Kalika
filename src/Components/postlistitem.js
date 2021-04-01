@@ -42,9 +42,9 @@ class PostListitem extends React.Component {
                 {/* {console.log('index',this.props.indx+1)} */}
                 <div className="post-top">
                     <div className="post-top-username-div">
-                        <img className="post-top-photo" src={'./images/chasma.jpg'}/>
+                        <img className="post-top-photo" src={this.props.User.ImgURL}/>
                         <div className="post-name-time">
-                            <p className="username-text">Naveen</p>
+                            <p className="username-text">{this.props.User.Username}</p>
                             <h5 className="username-text">{format(new Date(this.props.CreatedAt), 'PPPP') }</h5>
                         </div>
                         
@@ -94,7 +94,7 @@ class PostListitem extends React.Component {
 }
 
 const mapStateToProps=(state,getState) =>{
-    console.log('ddddddddddddddddddd',state)
+    // console.log('ddddddddddddddddddd',state)
     return{
         CurrentUserId:state.auth.uid,
     }   

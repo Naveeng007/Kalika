@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'//passing dispatch to function...third party libr
 import authReducer from '../Reducer/auth'
 import PostReducer from '../Reducer/Post'
 import ActivityReducer from '../Reducer/Activity'
+import ChatReducer from '../Reducer/Chat'
 const composeEnhancers= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;//developer tool for react...error occuring check it
 
 export default ()=>{ // There can be only one default export.
@@ -11,7 +12,8 @@ export default ()=>{ // There can be only one default export.
         combineReducers({
           auth:authReducer,//also check that ihese property auth: can be removed or not
           Post:PostReducer,
-          Activity:ActivityReducer
+          Activity:ActivityReducer,
+          Chat:ChatReducer
         }),
 
         composeEnhancers(applyMiddleware(thunk))

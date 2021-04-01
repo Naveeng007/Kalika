@@ -1,7 +1,7 @@
 
 
 export default (Post) =>{
-    console.log('called')
+    // console.log('called')
     if(Post===undefined)
     return Post
     for(let i=0;i<Post.length;i++){
@@ -16,6 +16,6 @@ export default (Post) =>{
             }
         }
     }
-    console.log(Post)
+    // console.log(Post)
     return Post;
 }

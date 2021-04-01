@@ -10,6 +10,7 @@ import './Style/style.scss'
 import history from "./history";
 import AppRouter from './Router/AppRouter'
 import { F_SetActivity } from './Action/Activity'
+import { F_SetUser,F_CreateUser } from './Action/Chat'
 
 const jsx=(
     <Provider store={store}>
@@ -17,6 +18,14 @@ const jsx=(
     </Provider>
 )
 
+const loading=(
+    <div className="loading">
+         <img className="loading-photo"src="./images/dolphin.gif"/>
+    </div>
+   
+)
+
+ReactDOM.render(loading,document.getElementById('app'))
 
 let HasRendered=false;
 
@@ -32,22 +41,54 @@ const RenderApp=()=>{
 
 // ReactDOM.render(jsx, document.getElementById('app')
 //     )
-    firebase.auth().onAuthStateChanged((user)=>{
+    firebase.auth().onAuthStateChanged(async (user)=>{
  
         if(user){
             console.log("........................loged in",user)
-            store.dispatch(login(user.uid))
+          await  store.dispatch(login(user.uid))
             // RenderApp();
             // history.push('/dashboard')
-            const state=store.getState();
-            console.log(state)
+           
 
-            store.dispatch(F_SetPost()).then(() =>{
-               store.dispatch(F_SetActivity()).then(() =>{
+            // store.dispatch(F_SetPost()).then(() =>{
+            //    store.dispatch(F_SetActivity()).then(() =>{
+            //     RenderApp();
+            //     history.push('/dashboard')
+            //    })
+            // })
+            console.log('111111')
+            
+
+           await  store.dispatch(F_SetUser()).then(async () =>{
+
+                const User={
+                    Email:user.email,
+                    Username:user.displayName,
+                    UserId:user.uid,
+                    imgUrl:user.photoURL
+                }
+
+                const Chat=store.getState().Chat;
+                let flag=0;
+                Chat.forEach(chat => {
+                    console.log(chat.UserId,'------',user.uid)
+                    if(chat.UserId===user.uid) {
+                        flag=1;
+    
+                    }
+                })
+                if(flag===0){
+                   await  store.dispatch(F_CreateUser(User))
+                }
+            })
+
+                store.dispatch(F_SetPost())
+                store.dispatch(F_SetActivity())
+           
+            console.log('22222',store.getState())
                 RenderApp();
                 history.push('/dashboard')
-               })
-            })
+               
         }
         else
         {

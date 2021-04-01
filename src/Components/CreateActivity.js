@@ -4,8 +4,8 @@ import moment from 'moment'//for better understanding check official website
 class CreateActivity extends React.Component {
     constructor(props) {
         super(props);
-        console.log('props',this.props)
-
+        // console.log('props',this.props)
+// 
         this.state={
             Title: props.Activity?props.Activity.Title:'',
             Text:props.Activity?props.Activity.Text:'',
