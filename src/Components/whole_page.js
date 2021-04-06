@@ -16,6 +16,7 @@ class WholePage extends React.Component {
     }
 
     
+    
     SetUserChatId=({User,RoomId})=>{
         this.setState({ischat: true});
         this.setState({User})

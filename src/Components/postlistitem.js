@@ -2,6 +2,12 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 import {F_DeletePost,F_LikePost,F_DislikePost} from '../Action/Post'
+
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript', javascript);
+import 'highlight.js/styles/github.css';
+
 class PostListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
@@ -54,9 +60,11 @@ class PostListitem extends React.Component {
                     { this.props.CurrentUserId===this.props.UserId &&   <input type="image" onClick={this.DeletePost}  className="username-text" width="20px" height="20px" src="./images/delete.png" />}
                     </div>
                 </div>
-
+                 
                 <div className="post-textarea">
-                    <p> {this.props.Text}  </p>
+               
+                     <code>{hljs.highlight(this.props.Text, {language: 'javascript'}).value} </code>  
+                    {/* <p> {this.props.Text}  </p> */}
                 </div>
 
                 <div className="post-feedbacks">

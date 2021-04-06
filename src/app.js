@@ -12,6 +12,8 @@ import AppRouter from './Router/AppRouter'
 import { F_SetActivity } from './Action/Activity'
 import { F_SetUser,F_CreateUser } from './Action/Chat'
 
+
+
 const jsx=(
     <Provider store={store}>
         <AppRouter/>
@@ -20,7 +22,7 @@ const jsx=(
 
 const loading=(
     <div className="loading">
-         <img className="loading-photo"src="./images/dolphin.gif"/>
+         <img className="loading-photo"src="./images/filling.gif"/>
     </div>
    
 )

@@ -40,7 +40,7 @@
    
 }
 .user1-message{
-   
+    
     min-height: 40px;
     display: flex;
     flex-direction:column;
@@ -50,11 +50,14 @@
     margin-bottom: 0px;
     align-items:flex-start;
     margin-top:5px;
+    
     p{
         background-color:#0CAFFF;
         margin-bottom: 0px;
+        // overflow-wrap: break-word;
         padding: 5px;
         border-radius:10px;
+        
     }
     h5{
         margin-top: 4px;
@@ -68,7 +71,7 @@
 .chat-bar{
     display:flex;
     flex-direction: column;
-
+    
     height:100%;
 }
 
@@ -104,4 +107,9 @@
     
     
     
+}
+
+.Chat-message{
+    display: flex;
+    flex-wrap: wrap;
 }

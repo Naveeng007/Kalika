@@ -4,16 +4,19 @@ import moment from 'moment'
 
 const CreateUser =(User={})=>({
     type: 'CreateUser',
-    User
+    User,
+    
 })
 
 export const F_CreateUser =(User={})=>{
     return (dispatch,getState)=>{
         console.log('New User',User)
+        const Rooms=[]
         database.ref(`Users`).push(User).then((ref)=>{
             dispatch(CreateUser(
                 // Id=ref.key,
-                User,
+                ...User,
+                Rooms
             ))
         })
     }
@@ -84,4 +87,10 @@ export const F_SetUser =()=>{
         
        
     }
+}
+
+
+const CreateRoom=(Chats={}) => {
+    type:'CreateRoom',
+    Chats
 }

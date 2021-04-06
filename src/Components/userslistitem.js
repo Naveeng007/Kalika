@@ -1,5 +1,4 @@
 import React from 'react' 
-
 class Userslistitem extends React.Component {
     constructor(props){
         super(props)
@@ -18,11 +17,10 @@ class Userslistitem extends React.Component {
                         </div>
                        
                         <div className="user-message-info" onClick={this.Cliked}>
-                            <p className='user'>{this.props.User.Username}</p>
+                            <p className='user'>{this.props.User.Username }</p>
                             <p className='last-message'>hi there!!</p>
-                        </div>
-                        
-                    </div>
+                        </div>  
+            </div>
         )
     }
 }
