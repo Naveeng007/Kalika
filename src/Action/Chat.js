@@ -58,7 +58,7 @@ export const F_SendMessage =(RoomId='',SenderId='', ReceiverId='',Message='')=>{
         }
         database.ref(`Messages/${RoomId}`).push(Messages).then((ref)=>{
             dispatch(SendMessage(
-                ...CreateUser,
+                ...Messages,
             ))
         })
     }

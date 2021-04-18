@@ -22,7 +22,7 @@ class ActivityListitem extends React.Component {
                     <div className="post-top-username-div">
                         {/* <img className="post-top-photo" src={'./images/chasma.jpg'}/> */}
                         <div className="post-name-time">
-                            <p className="username-text">{this.props.Title}</p>
+                            <p className="activity-title">{this.props.Title}</p>
                             <h6 className="username-text">{format(new Date(this.props.CreatedAt), 'PPPP') }</h6>
                         </div>
                         

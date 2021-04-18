@@ -1,0 +1,40 @@
+// *{
+//     outline: 2px solid rgb(58, 1, 1);
+// }
+.box-layout{
+   
+    display: flex;
+     justify-content:center ;
+     align-items: center ;
+     height : 100vh;
+
+  
+    
+}
+
+.box-layout-login{
+    display: flex;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+   
+    text-align: center;
+    // justify-content: center;
+    border-radius: 14px;
+    box-shadow: 14px 14px 4px (1,1,1,0.5);
+    // border:2  solid gray;
+    
+    // height: 10vh;
+}
+
+.login-button{
+    width: 100px;
+    height: 40px;
+    align-self: center;
+    cursor: pointer;
+    border:none;
+    color: white;
+    background-color: #2777E8;
+    border-radius: 4px;
+}

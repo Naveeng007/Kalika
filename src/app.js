@@ -46,7 +46,7 @@ const RenderApp=()=>{
     firebase.auth().onAuthStateChanged(async (user)=>{
  
         if(user){
-            console.log("........................loged in",user)
+            // console.log("........................loged in",user)
           await  store.dispatch(login(user.uid))
             // RenderApp();
             // history.push('/dashboard')
@@ -73,7 +73,7 @@ const RenderApp=()=>{
                 const Chat=store.getState().Chat;
                 let flag=0;
                 Chat.forEach(chat => {
-                    console.log(chat.UserId,'------',user.uid)
+                    // console.log(chat.UserId,'------',user.uid)
                     if(chat.UserId===user.uid) {
                         flag=1;
     
@@ -87,7 +87,7 @@ const RenderApp=()=>{
            await     store.dispatch(F_SetPost())//await because when new user is created,then it must run not before
                     store.dispatch(F_SetActivity())
            
-            console.log('22222',store.getState())
+            // console.log('22222',store.getState())
                 RenderApp();
                 history.push('/dashboard')
                

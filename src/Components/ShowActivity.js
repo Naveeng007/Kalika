@@ -3,7 +3,9 @@ import {FCreateActivity} from '../Action/Activity'
 import ActivityListitem from './ActivityListitem'
 import CreateActivity from './CreateActivity'
 import filter from '../filter/Post'
+import Notes_filter from '../filter/Notes'
 import {connect} from 'react-redux'
+import NotesFilter from './Notes_Filter'
 class Activities extends React.Component {
     constructor(props) {
         // console.log('Props from ShowActivity',props)
@@ -24,6 +26,8 @@ class Activities extends React.Component {
                    <h2 className="title">Personal Notes</h2>
                <CreateActivity
                 onSubmit={this.onSubmit}/>
+
+                <NotesFilter/>
                 
             {/* {console.log("from Activity ActivityListitem ",this.props.Activity)} */}
 
@@ -46,10 +50,11 @@ return{
 };
 
 const mapStateToProps=(state)=>{
-    // console.log('States',state)
+    // console.log('States||||||||',state)
     // console.log('ShowActivity state',state)
     return{
-        Activity:filter(state.Activity)//adding expenses props to ExpenseList
+        Activity:Notes_filter(state.Activity,state.Filter)//adding expenses props to ExpenseList
+
     }
 }
 export default connect(mapStateToProps,MapDispatchToProps)(Activities) 

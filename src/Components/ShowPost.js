@@ -14,7 +14,7 @@ class Post extends React.Component {
             Email:'',
         }
         props.Users.forEach(user =>{
-            console.log(user.UserId,'=======',props.uid,user)
+            // console.log(user.UserId,'=======',props.uid,user)
             if(user.UserId===props.uid){
                 this.state.imgUrl=user.imgUrl,
                 this.state.Username=user.Username

@@ -17,18 +17,34 @@ class CreateActivity extends React.Component {
 
     onTextChange=(event) =>{
         const Text=event.target.value
-        this.setState(()=>({Text}))
+
+        if(Text.length>300){//if u want words less than 10 ... Title.split(" ").length>10||
+            this.setState(()=>({error:'Text must contain less than 300 characters'}))
+        }
+        else
+        {
+            this.setState(()=>({error:''}))
+            this.setState(()=>({Text}))
+        }
+        
     }
 
     onTitleChange=(event) =>{
         const Title=event.target.value
-        this.setState(()=>({Title}))
+        if(Title.length>50){//if u want words less than 10 ... Title.split(" ").length>10||
+            this.setState(()=>({error:'Title must contain less than 50 characters'}))
+        }
+        else
+            {
+                this.setState(()=>({error:''}))
+                this.setState(()=>({Title}))
+            }
     }
 
     onSubmit=(e)=>{
         e.preventDefault()
         if(!this.state.Text||!this.state.Title){
-            this.setState(()=>({error:'Text is required'}))
+            this.setState(()=>({error:'Title and Text  is required'}))
         }
         else{
             this.setState(()=>({error:''}))//this function must retur
@@ -47,7 +63,7 @@ class CreateActivity extends React.Component {
         // console.log('properties',this.props)
         return(
             <div className="post">
-                {this.state.error&&<p>{this.state.error}</p>}
+                {this.state.error&&<p className="error">{this.state.error}</p>}
                    
 
                     <div className="create-post-textarea">
@@ -69,7 +85,7 @@ class CreateActivity extends React.Component {
 						</textarea>
 					</div>
 
-					<button onClick={this.onSubmit}  className="submit-post">Submit</button>
+					<button onClick={this.onSubmit}  className="submit-Notes">Submit</button>
 
                </div>
         )

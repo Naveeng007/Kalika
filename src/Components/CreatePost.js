@@ -16,7 +16,15 @@ class CreatePost extends React.Component {
 
     onTextChange=(event) =>{
         const Text=event.target.value
-        this.setState(()=>({Text}))
+        if(Text.length>300){//if u want words less than 10 ... Title.split(" ").length>10||
+            this.setState(()=>({error:'Text must contain less than 300 characters'}))
+        }
+        else
+        {
+            this.setState(()=>({error:''}))
+            this.setState(()=>({Text}))
+        }
+        
     }
 
     onSubmit=(e)=>{
@@ -39,13 +47,16 @@ class CreatePost extends React.Component {
         // console.log('properties',this.props)
         return(
             <div className="post">
-                {this.state.error&&<p>{this.state.error}</p>}
+                {this.state.error&&<p className="error">{this.state.error}</p>}
                     <div className="post-top">
 						<div className="post-top-username-div">
                             <img className="post-top-photo" src={this.props.imgUrl}/>
 							<p className="username-text">{this.props.Username}</p>
 						</div>
 					</div>
+
+
+                
 
                     <div className="create-post-textarea">
 						<textarea 

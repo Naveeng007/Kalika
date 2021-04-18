@@ -4,6 +4,7 @@ import authReducer from '../Reducer/auth'
 import PostReducer from '../Reducer/Post'
 import ActivityReducer from '../Reducer/Activity'
 import ChatReducer from '../Reducer/Chat'
+import FilterReducer from '../Reducer/Filter'
 const composeEnhancers= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;//developer tool for react...error occuring check it
 
 export default ()=>{ // There can be only one default export.
@@ -13,6 +14,7 @@ export default ()=>{ // There can be only one default export.
           auth:authReducer,//also check that ihese property auth: can be removed or not
           Post:PostReducer,
           Activity:ActivityReducer,
+          Filter:FilterReducer,
           Chat:ChatReducer
         }),
 

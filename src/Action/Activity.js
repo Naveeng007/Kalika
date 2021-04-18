@@ -79,3 +79,11 @@ export const F_SetActivity=()=>{
         })
     }
   }
+
+
+  export const notesfilter=(Text='')=>({
+    type:'NotesFilter',
+    Text,
+  })
+
+

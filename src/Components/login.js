@@ -5,8 +5,8 @@ export const Login=({startLogin})=>(
     <div className="box-layout">
         <div className="box-layout-login">
             <h1>Login</h1>
-            <p>Welcome to Khata Manager</p>
-            <button className="login-button" onClick={startLogin}>Login</button>
+            <p>Welcome to Prakriti</p>
+            <button className="login-button" onClick={startLogin}>Login </button>
         </div>
        
     </div>

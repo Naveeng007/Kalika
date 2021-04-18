@@ -16,7 +16,14 @@ const ActivityReducer=(state=Activity,action)=>{
             console.log('Actioin from DeleteActivity',action)
             return state.filter(({ActivityId})=> ActivityId!=action.ActivityId)//this should automatically return
             
-        
+        // case "NotesFilter"://to be checked
+        //    console.log(action.Text,'<-------')
+        //     return  state.filter((Note) => {
+        //         const textMatch = Note.Text.toLowerCase().includes(action.Text.toLowerCase());
+        //         return  textMatch;
+        //       }).sort((a, b) => {
+        //           return a.CreatedAt < b.CreatedAt ? 1 : -1;
+        //       });
         case "EditActivity"://to be implemented
             return state;
         case "SetActivity":

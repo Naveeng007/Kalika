@@ -74,18 +74,18 @@ class PostListitem extends React.Component {
                             {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/love.png" />}
                             <p className="like-count">{this.state.Likes}</p>
                     </div>
-                    <div className="like">
-                            {/* <button className="like-button">Like</button> */}
+                    {/* <div className="like"> */}
+                            {/* <button className="like-button">Like</button>
                             {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
                             {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/applause.png" />}
-                            <p className="like-count">{this.state.Likes}</p>
-                    </div>
-                    <div className="like">
-                            {/* <button className="like-button">Like</button> */}
+                            <p className="like-count">{this.state.Likes}</p> */}
+                    {/* </div> */}
+                    {/* <div className="like"> */}
+                            {/* <button className="like-button">Like</button>
                             {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
                             {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/flower-bouquet.png" />}
-                            <p className="like-count">{this.state.Likes}</p>
-                    </div>
+                            <p className="like-count">{this.state.Likes}</p> */}
+                    {/* </div> */}
 
                     {/* <div className="dislike"> */}
                             {/* <button className="dislike-button">Dislike</button> */}
