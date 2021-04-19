@@ -39,10 +39,12 @@ class WholePage extends React.Component {
                />
                }
                {this.state.ischat && 
-
+                    
                <Chat
             
                 User={this.state.User}
+                ReceiverId={this.state.User.UserId}
+                
                 RoomId={this.state.RoomId}
                 BackClick={this.BackClick}
                />}

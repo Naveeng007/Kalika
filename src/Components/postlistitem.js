@@ -23,7 +23,8 @@ class PostListitem extends React.Component {
         })
          this.state={
             Likes:props.Likes.length,
-            isLiked
+            isLiked,
+            isbookmarked:false
         }
 
 
@@ -42,6 +43,9 @@ class PostListitem extends React.Component {
         console.log('Dislike Post CLicked',this.props.PostId)
         this.props.F_DislikePost(this.props.PostId)
     }
+    onBookmark=()=>{
+        this.setState(()=>({isbookmarked:!this.state.isbookmarked}))
+    }
     render() {
         return (
             <div className={`post`}>
@@ -57,29 +61,39 @@ class PostListitem extends React.Component {
                     </div>
 
                     <div className="post-top-delete">
-                    { this.props.CurrentUserId===this.props.UserId &&   <input type="image" onClick={this.DeletePost}  className="username-text" width="20px" height="20px" src="./images/delete.png" />}
+                   {this.props.CurrentUserId===this.props.UserId && <div className="post-feature">
+                        {/* <button name="delete" className="logout-button">Logout</button> */}
+                        
+                        {    <input type="image" onClick={this.DeletePost}  className="logout-button" width="20px" height="20px" margin-right="5px" src="./images/delete.png" />}
+		            </div>}
+                    <div className="post-feature">
+                        {/* <button name="delete" className="logout-button">Logout</button> */}
+                        
+                        {!this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/unbookmarked.png" />}
+                        {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="bookmarked"   src="./images/bookmark.png" />}
+		            </div>
+                
                     </div>
                 </div>
-                 
+                 {/* <code>{hljs.highlight(this.props.Text, {language: 'javascript'}).value} </code>   */}
                 <div className="post-textarea">
                
-                     <code>{hljs.highlight(this.props.Text, {language: 'javascript'}).value} </code>  
-                    {/* <p> {this.props.Text}  </p> */}
+                     
+                    <p> {this.props.Text}  </p>
                 </div>
 
                 <div className="post-feedbacks">
                     <div className="like">
                             {/* <button className="like-button">Like</button> */}
-                            {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
-                            {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/love.png" />}
+                            {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/like.png" />}
+                            {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/liked.png" />}
                             <p className="like-count">{this.state.Likes}</p>
                     </div>
-                    {/* <div className="like"> */}
-                            {/* <button className="like-button">Like</button>
-                            {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
-                            {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/applause.png" />}
-                            <p className="like-count">{this.state.Likes}</p> */}
-                    {/* </div> */}
+                    <div className="like">
+
+                            <input type="image"  className="like-button" width="20px" height="20px" src="./images/comment.png" />
+            
+                    </div>
                     {/* <div className="like"> */}
                             {/* <button className="like-button">Like</button>
                             {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
@@ -95,6 +109,23 @@ class PostListitem extends React.Component {
                     {/* </div> */}
                 
             </div>
+            <div className="post">
+                    <div className="comment-post-textarea">
+                        <img className="comment-top-photo" src={this.props.imgUrl}/>
+    
+                        <textarea 
+                        className="submit-post-Title"  
+                        placeholder="Enter Text"
+                        id="comment-post-Title"
+                        >
+                            
+						</textarea>
+                        <div className="send-top-photo">
+							<input type="image"   className="username-text" width="20px" height="20px" src="./images/send.png" />
+						</div>
+                        
+					</div>
+               </div>
         </div>
 
         )

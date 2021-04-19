@@ -56,8 +56,9 @@ $colors-list:#20B2AA #FF69B4  #00BFFF #FEBE10 #DE3163;
 }
 
 .post-top-delete{
-
+   display: flex;
    margin-right: 0px;
+   
    // margin-left: 70%;
    /*border: 2px solid blue;*/
 }
@@ -92,13 +93,22 @@ margin: 5px;
 
 .post-feedbacks{
    display: flex;
+   justify-content:space-between;
+   border-bottom:1px solid rgb(1,1,1,0.1);
    /*border: 2px solid blue;*/
 }
 
 .like, .dislike{
+   // background-color: $background;
+   
    display: flex;
+   p{
+      padding-left:10px;
+   }
    height: 20px;
    margin: 10px;	
+   margin-left: 50px;
+   margin-right: 50px;
 }
 
 
@@ -230,3 +240,47 @@ margin: 5px;
     padding:2px;
     color:white;
  }
+
+ #comment-post-Title{
+    background-color:#F0F2F5;
+    border:none;
+ }
+
+ .comment-post-textarea{
+    display:flex;
+   textarea{
+      margin-left:5px;
+      margin-right:5px;
+   }
+ }
+ .comment-top-photo{
+    margin-top: 10px;
+    height:30px;
+    width:30px;
+    border-radius: 50%;
+   
+ 
+ }
+
+ .send-top-photo{
+   margin-top: 15px;
+ }
+
+.post-feature{
+   display: flex;
+   justify-content:center;
+   align-items:center;
+   margin: 5px;
+   margin-top: 0px;
+   width:40px;
+   height:40px;
+   background-color:$background;
+   border-radius: 50%;
+
+}
+
+.bookmarked{
+   margin-left: 5px;
+   width:20px;
+    height:20px;
+}

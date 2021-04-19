@@ -1,4 +1,4 @@
-import Post from '../filter/Post';
+
 import database from '../firebase/firebase'
 import moment from 'moment'
 
@@ -11,41 +11,45 @@ const CreateUser =(User={})=>({
 export const F_CreateUser =(User={})=>{
     return (dispatch,getState)=>{
         console.log('New User',User)
-        const Rooms=[]
+        
         database.ref(`Users`).push(User).then((ref)=>{
             dispatch(CreateUser(
                 // Id=ref.key,
                 ...User,
-                Rooms
             ))
         })
     }
 }
-const SetChat =(Users) =>({
-    Type: 'SetChat',
-    Users
+const SetChat =(Messages) =>({
+    type: 'SetChat',
+    Messages
 })
 
-const F_SetChat =(Username='', Email='',ImgURL='')=>{
+export const F_SetChat =(RoomId={})=>{
     return (dispatch,getState)=>{
-        const User ={
-            // Id,
-            Username,
-            Email,
-            ImgURL,
-            UserId
-        }
-        database.ref(`Users`).push(User).then((ref)=>{
-            dispatch(CreateUser(
-                ...User,
-            ))
+    
+        console.log('.....d.....d.d.d.dd.d',RoomId)
+        
+        database.ref(`Messages/${RoomId}`).once('value').then((snapshot)=>{
+            const Chat=[]
+            snapshot.forEach((snapshotChild)=>{
+                Chat.push({
+                    Id: snapshotChild.key,
+                   ...snapshotChild.val()
+                })
+            })
+
+            const Messages ={
+                RoomId,
+                Chat
+            }
+            console.log('SetChat',Messages)
+            dispatch(SetChat(Messages))
         })
     }
 }
-const SendMessage =()=>({
-    Type: 'SendMessage',
-    SenderId,
-    ReceiverId,
+const SendMessage =(Message)=>({
+    type: 'SendMessage',
     Message,
 })
 
@@ -54,11 +58,12 @@ export const F_SendMessage =(RoomId='',SenderId='', ReceiverId='',Message='')=>{
         const Messages ={
             SenderId,
             ReceiverId,
-            Message
+            Message,
+            CreatedAt:moment().valueOf()
         }
         database.ref(`Messages/${RoomId}`).push(Messages).then((ref)=>{
             dispatch(SendMessage(
-                ...Messages,
+                Messages,
             ))
         })
     }

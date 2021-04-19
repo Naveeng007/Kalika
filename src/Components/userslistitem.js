@@ -2,9 +2,11 @@ import React from 'react'
 class Userslistitem extends React.Component {
     constructor(props){
         super(props)
-        // console.log('usersssss',props)
+        console.log('usersssss',props)
 
     }
+    
+
     Cliked=()=>{
         console.log('clicked on User ',this.props.User.Username)
         this.props.OnUserClick(this.props.User);

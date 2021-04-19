@@ -4,6 +4,7 @@ import authReducer from '../Reducer/auth'
 import PostReducer from '../Reducer/Post'
 import ActivityReducer from '../Reducer/Activity'
 import ChatReducer from '../Reducer/Chat'
+import MessageReducer from '../Reducer/Message'
 import FilterReducer from '../Reducer/Filter'
 const composeEnhancers= window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;//developer tool for react...error occuring check it
 
@@ -15,7 +16,8 @@ export default ()=>{ // There can be only one default export.
           Post:PostReducer,
           Activity:ActivityReducer,
           Filter:FilterReducer,
-          Chat:ChatReducer
+          Chat:ChatReducer,
+          Message:MessageReducer
         }),
 
         composeEnhancers(applyMiddleware(thunk))
