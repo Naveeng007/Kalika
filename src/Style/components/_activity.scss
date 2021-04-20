@@ -14,22 +14,14 @@
  }
  
  .activity-box{
-    // display: flex;
-    // background-color: #ffffff;
-    flex-direction: column;
-    // margin:10px;
-    // padding: 0px;
-    // border-radius: 15px;
-    // height: 300px;
-    // // height:100%;
 
-    // // align-content: flex-start;
-   //  border: 2px solid  red;
+    flex-direction: column;
     display: flex;
     background-color: #ffffff;
     margin:10px;
     border-radius: 15px;
     height: 400px;
+    box-shadow: $post-shadow;
     // justify-content: center;
  
  
@@ -51,6 +43,7 @@
     margin:0px;
     height:100%;
     width: 100%;
+    box-shadow: $shadow-up;
     // border: 2px solid red;
  }
 
@@ -86,3 +79,19 @@
     display: flex;
     color:#1CAC78;
  }
+
+ $colors-list:#20B2AA #FF69B4  #00BFFF #FEBE10 #DE3163; 
+
+ @each $current-color in $colors-list {
+   $i: index($colors-list, $current-color);
+   .post#{$i}{
+      display: flex;
+      background-color: $current-color;
+      color:white;
+      flex-direction: column;
+      margin:10px;
+      padding: 10px;
+      border-radius: 14px;
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+   }
+}

@@ -2,16 +2,14 @@ import React from 'react'
 import {connect} from 'react-redux'
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 import {F_DeletePost,F_LikePost,F_DislikePost} from '../Action/Post'
-
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-hljs.registerLanguage('javascript', javascript);
-import 'highlight.js/styles/github.css';
+import CreateComment from './CreateComment'
+import CommentListitem from './Commentslistitem'
+import filter from '../filter/Post'
 
 class PostListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
-        // console.log('props from Listitem inner',props)
+        console.log('props from Listitem inner',props.Comment.map((comment)=>(comment)))
         
         let isLiked=false;
         props.Likes.forEach((like)=>{
@@ -24,8 +22,12 @@ class PostListitem extends React.Component {
          this.state={
             Likes:props.Likes.length,
             isLiked,
-            isbookmarked:false
+            isbookmarked:false,
+            commentopen:false,
+            
         }
+
+        
 
 
     }
@@ -33,6 +35,7 @@ class PostListitem extends React.Component {
     DeletePost=(e)=>{
         console.log('Delete Post CLicked',this.props.PostId)
         this.props.F_DeletePost(this.props.PostId)
+        alert('Do You really want to delete this Post')
     }
 
     onLikePost=()=>{
@@ -46,6 +49,10 @@ class PostListitem extends React.Component {
     onBookmark=()=>{
         this.setState(()=>({isbookmarked:!this.state.isbookmarked}))
     }
+    onCommentOpen=()=>{
+        this.setState(()=>({commentopen:!this.state.commentopen}))
+        console.log('Comment opened')
+    }
     render() {
         return (
             <div className={`post`}>
@@ -54,8 +61,8 @@ class PostListitem extends React.Component {
                     <div className="post-top-username-div">
                         <img className="post-top-photo" src={this.props.imgUrl}/>
                         <div className="post-name-time">
-                            <p className="username-text">{this.props.Username}</p>
-                            <h5 className="username-text">{format(new Date(this.props.CreatedAt), 'PPPP') }</h5>
+                            <p className="username-text" >{this.props.Username}</p>
+                            <h6 className="username-text">{format(new Date(this.props.CreatedAt), 'PPPP') }</h6>
                         </div>
                         
                     </div>
@@ -65,6 +72,18 @@ class PostListitem extends React.Component {
                         {/* <button name="delete" className="logout-button">Logout</button> */}
                         
                         {    <input type="image" onClick={this.DeletePost}  className="logout-button" width="20px" height="20px" margin-right="5px" src="./images/delete.png" />}
+		            </div>}
+                   {!this.state.isbookmarked && <div className="post-feature" >
+                        {/* <button name="delete" className="logout-button">Logout</button> */}
+                        
+                        {    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/follow.png" />}
+                        {/* {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />} */}
+		            </div>}
+                    {this.state.isbookmarked && <div className="post-feature" id="following">
+                        {/* <button name="delete" className="logout-button">Logout</button> */}
+                        
+                        {/* {    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/follow.png" />} */}
+                        {   <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />}
 		            </div>}
                     <div className="post-feature">
                         {/* <button name="delete" className="logout-button">Logout</button> */}
@@ -91,7 +110,7 @@ class PostListitem extends React.Component {
                     </div>
                     <div className="like">
 
-                            <input type="image"  className="like-button" width="20px" height="20px" src="./images/comment.png" />
+                            <input type="image" onClick={this.onCommentOpen}  className="like-button" width="20px" height="20px" src="./images/comment.png" />
             
                     </div>
                     {/* <div className="like"> */}
@@ -109,23 +128,18 @@ class PostListitem extends React.Component {
                     {/* </div> */}
                 
             </div>
-            <div className="post">
-                    <div className="comment-post-textarea">
-                        <img className="comment-top-photo" src={this.props.imgUrl}/>
-    
-                        <textarea 
-                        className="submit-post-Title"  
-                        placeholder="Enter Text"
-                        id="comment-post-Title"
-                        >
-                            
-						</textarea>
-                        <div className="send-top-photo">
-							<input type="image"   className="username-text" width="20px" height="20px" src="./images/send.png" />
-						</div>
+               <CreateComment PostId={this.props.PostId} onCommentOpen={this.onCommentOpen} />
+
+
+               {this.props.Comment&& <div className="comment-posted">
+                   {/* {console.log(this.props.Comment.map((comment)=>(comment)))} */}
+                    {filter(this.props.Comment).map((comment)=>{
                         
-					</div>
-               </div>
+                        console.log('Comment----d-------',comment)
+                        return  <CommentListitem key={comment.CommentId+`${this.props.Comment.length}`}  {...comment} CurrentUserId= {this.props.CurrentUserId}  />//key updated because it will update that
+                    })}
+				</div>}
+
         </div>
 
         )
@@ -136,6 +150,7 @@ const mapStateToProps=(state,getState) =>{
     // console.log('ddddddddddddddddddd',state)
     return{
         CurrentUserId:state.auth.uid,
+        
     }   
 }
 const mapDispatchToProps=(dispatch) =>{

@@ -43,7 +43,26 @@ const PostReducer=(state=Posts,action)=>{
             console.log('Actioin from DeletePost',action)
             return state.filter(({PostId})=> PostId!=action.PostId)//this should automatically return
             
-        
+        case "CommentPost":
+            console.log("State from Comment",action)
+            return state.map((post)=>{
+                if(post.PostId===action.PostId){
+                    // console.log(post.PostId,'----',action)
+                    post.Comment.push({
+                        LikeId: action.LikeId,
+                        UserId: action.UserId,
+                        PostId: action.PostId,
+                        imgUrl: action.imgUrl,
+                        CreatedAt: action.CreatedAt,
+                        Comment_Text: action.Comment,
+                        displayName: action.displayName
+                    })
+                }
+               
+                return post
+            })
+
+            
         case "EditPost"://to be implemented
             return state;
         case "SetPost":

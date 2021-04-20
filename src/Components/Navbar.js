@@ -12,13 +12,19 @@ class Navbar extends React.Component {
 
                 <div className="logo">
                     {/* <img src={fre} style="height: 40px;width: 40px;"> </img> */}
-                    <img src="./images/fire.png" width="40px" height="40px" /> 
+                    <img src="./images/twitter.png" width="40px" height="40px" /> 
+                    <img src="./images/Prakriti.png" height="30px" /> 
 		        </div>
         <div className="navbar-right">
             <div className="Logout">
 			        {/* <button name="delete" className="logout-button">Logout</button> */}
                     
                     <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/bookmarked.png" />
+		    </div>
+            <div className="Logout">
+			        {/* <button name="delete" className="logout-button">Logout</button> */}
+                    
+                    <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/notification.png" />
 		    </div>
 		        <div className="Logout">
 			        {/* <button name="delete" className="logout-button">Logout</button> */}

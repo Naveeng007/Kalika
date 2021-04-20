@@ -11,6 +11,7 @@
         // border:10px solid yellow;
         overflow: scroll;
         height: 100%;
+       
         /*border: 2px solid blue;*/
 }
 
@@ -24,6 +25,7 @@
     background-color: $background;
     padding: 10px;
     outline: none;
+    
     // overflow: scroll;
     
     // border:1px solid red;
@@ -67,6 +69,7 @@
         
     }
     color:white;
+
 }
 .chat-bar{
     display:flex;
@@ -103,6 +106,8 @@
         color:rgb(1,1,1,0.5);
         margin-bottom: 0px;
     }
+
+
    
     
     

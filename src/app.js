@@ -47,7 +47,7 @@ const RenderApp=()=>{
  
         if(user){
             // console.log("........................loged in",user)
-          await  store.dispatch(login(user.uid))
+          await  store.dispatch(login(user.uid,user.photoURL,user.email,user.displayName))
             // RenderApp();
             // history.push('/dashboard')
            

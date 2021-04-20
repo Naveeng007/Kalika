@@ -63,8 +63,10 @@ class CreateActivity extends React.Component {
         // console.log('properties',this.props)
         return(
             <div className="post">
-                {this.state.error&&<p className="error">{this.state.error}</p>}
-                   
+                {/* {this.state.error&&<p className="error">{this.state.error}</p>} */}
+                {this.state.error&&<div className="comment-post" id="error">
+                    {<p className="error-text">{this.state.error}</p>}
+                </div>}
 
                     <div className="create-post-textarea">
 

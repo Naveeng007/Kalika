@@ -16,7 +16,7 @@ class ActivityListitem extends React.Component {
 
     render() {
         return (
-            <div className={`post${this.props.indx+1}`}>
+            <div className={`post${this.props.indx+1}`} id="Activity-post">
                 {/* {console.log('index',this.props.indx+1)} */}
                 <div className="post-top">
                     <div className="post-top-username-div">

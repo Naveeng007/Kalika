@@ -124,18 +124,7 @@ margin: 5px;
 }
 
  
-@each $current-color in $colors-list {
-   $i: index($colors-list, $current-color);
-   .post#{$i}{
-      display: flex;
-      background-color: $current-color;
-      color:white;
-      flex-direction: column;
-      margin:10px;
-      padding: 10px;
-      border-radius: 14px;
-   }
-}
+
 
 
 .post{
@@ -144,6 +133,7 @@ margin: 5px;
    color:black;
    flex-direction: column;
    margin:10px;
+   box-shadow: $post-shadow;
    padding: 10px;
    border-radius: 14px;
 }
@@ -175,7 +165,13 @@ margin: 5px;
 
 
 .create-post-textarea{
+   textarea{
+      border:none;
+      background-color:$background;
+      padding:5px 0px 0px 5px;
+   }
    margin: 5px;
+   
 }
 
 
@@ -209,6 +205,7 @@ margin: 5px;
     flex-direction:column;
     p{
        margin: 0px;
+      
      
     }
     h5{
@@ -234,10 +231,11 @@ margin: 5px;
    }
  }
 
- .error{
+ #error{
     background-color:#FF004F;
+   //  height:20px;
     border-radius: 10px;
-    padding:2px;
+   //  padding:2px;
     color:white;
  }
 
@@ -248,6 +246,7 @@ margin: 5px;
 
  .comment-post-textarea{
     display:flex;
+    
    textarea{
       margin-left:5px;
       margin-right:5px;
@@ -264,6 +263,7 @@ margin: 5px;
 
  .send-top-photo{
    margin-top: 15px;
+  
  }
 
 .post-feature{
@@ -283,4 +283,41 @@ margin: 5px;
    margin-left: 5px;
    width:20px;
     height:20px;
+}
+
+.comment-post{
+   display: flex;
+   background-color: white;
+   color:black;
+   flex-direction: column;
+   margin:10px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   padding: 10px;
+   border-radius: 14px;
+}
+
+.comment{
+   display: flex;
+   margin-top: 10px;
+}
+
+.comment-text{
+   display: flex;
+   margin: 0px;
+   margin-left: 5px;
+   margin-bottom: 5px;
+   // padding: 0px;
+   border-radius:  10px;
+   background-color:$background;
+   flex-direction: column;
+   p{
+      margin:5px;
+      font-size: 15px;
+      margin-top: 1px;
+   }
+}
+
+.comment-posted{
+   display: flex;
+   flex-direction: column;
 }

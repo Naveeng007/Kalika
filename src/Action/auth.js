@@ -15,7 +15,10 @@ export const startLogout=()=>{
 export const logout=()=>({
     type:'LOGOUT',
 })
-export const login=(uid)=>({
+export const login=(uid='',imgUrl={},email='',displayName='')=>({
     type:'LOGIN',
-    uid
+    uid,
+    imgUrl,
+    displayName,
+    email,
 })
