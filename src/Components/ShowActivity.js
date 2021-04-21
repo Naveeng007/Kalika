@@ -14,7 +14,7 @@ class Activities extends React.Component {
         
     }
     onSubmit=(Activity)=>{
-        console.log('activity create submitted',Activity)
+        // console.log('activity create submitted',Activity)
         this.props.FCreateActivity(Activity)
     }
 

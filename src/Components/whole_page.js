@@ -7,7 +7,7 @@ import Chat from './chat'
 class WholePage extends React.Component {
     constructor(props){
         super(props);
-        console.log('Props from whole page',props);
+        // console.log('Props from whole page',props);
         this.state={
             ischat: false,
             User:{},

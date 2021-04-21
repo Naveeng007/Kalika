@@ -49,13 +49,26 @@ const PostReducer=(state=Posts,action)=>{
                 if(post.PostId===action.PostId){
                     // console.log(post.PostId,'----',action)
                     post.Comment.push({
-                        LikeId: action.LikeId,
+                        CommentId: action.CommentId,
                         UserId: action.UserId,
                         PostId: action.PostId,
                         imgUrl: action.imgUrl,
                         CreatedAt: action.CreatedAt,
                         Comment_Text: action.Comment,
                         displayName: action.displayName
+                    })
+                }
+               
+                return post
+            })
+        
+        case "DeleteComment":
+            console.log("Reducer from Delete",action)
+            return state.map((post)=>{
+                if(post.PostId===action.PostId){
+                    // console.log(post.PostId,'----',action)
+                    post.Comment=  post.Comment.filter((comment)=>{
+                        return  comment.CommentId!=action.CommentId
                     })
                 }
                

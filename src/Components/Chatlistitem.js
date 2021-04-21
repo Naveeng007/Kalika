@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 class Chatlistitem extends React.Component {
     constructor(props){
         super(props)
-        console.log('Hellooooooooooo',props)
+        // console.log('Hellooooooooooo',props)
         this.state={
             UserNumber:(this.props.UserId===this.props.SenderId)?1:2
         }

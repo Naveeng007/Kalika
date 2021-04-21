@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
-import {F_DeletePost,F_LikePost,F_DislikePost} from '../Action/Post'
+import {F_DeletePost,F_LikePost,F_DeleteComment} from '../Action/Post'
 import CreateComment from './CreateComment'
 import CommentListitem from './Commentslistitem'
 import filter from '../filter/Post'
@@ -9,7 +9,7 @@ import filter from '../filter/Post'
 class PostListitem extends React.Component {
     constructor(props){//we are using props which is send from another component
         super(props)
-        console.log('props from Listitem inner',props.Comment.map((comment)=>(comment)))
+        // console.log('props from Listitem inner',props.Comment.map((comment)=>(comment)))
         
         let isLiked=false;
         props.Likes.forEach((like)=>{
@@ -33,17 +33,17 @@ class PostListitem extends React.Component {
     }
 
     DeletePost=(e)=>{
-        console.log('Delete Post CLicked',this.props.PostId)
+        // console.log('Delete Post CLicked',this.props.PostId)
         this.props.F_DeletePost(this.props.PostId)
         alert('Do You really want to delete this Post')
     }
 
     onLikePost=()=>{
-        console.log('Like Post CLicked',this.state.Likes)
+        // console.log('Like Post CLicked',this.state.Likes)
         this.props.F_LikePost(this.props.PostId)
     }
     onDislikePost=()=>{
-        console.log('Dislike Post CLicked',this.props.PostId)
+        // console.log('Dislike Post CLicked',this.props.PostId)
         this.props.F_DislikePost(this.props.PostId)
     }
     onBookmark=()=>{
@@ -51,7 +51,16 @@ class PostListitem extends React.Component {
     }
     onCommentOpen=()=>{
         this.setState(()=>({commentopen:!this.state.commentopen}))
-        console.log('Comment opened')
+        // console.log('Comment opened',this.state.commentopen)
+    }
+
+    onCreateComment=()=>{
+        this.setState(()=>({commentopen:true}))
+    }
+
+    onDeleteComment=(PostId,CommentId)=>{
+        // console.log('Deleting comment from PL')
+        this.props.F_DeleteComment(PostId,CommentId)//..............................
     }
     render() {
         return (
@@ -73,24 +82,24 @@ class PostListitem extends React.Component {
                         
                         {    <input type="image" onClick={this.DeletePost}  className="logout-button" width="20px" height="20px" margin-right="5px" src="./images/delete.png" />}
 		            </div>}
-                   {!this.state.isbookmarked && <div className="post-feature" >
-                        {/* <button name="delete" className="logout-button">Logout</button> */}
-                        
-                        {    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/follow.png" />}
-                        {/* {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />} */}
-		            </div>}
-                    {this.state.isbookmarked && <div className="post-feature" id="following">
+                   {/* {!this.state.isbookmarked && <div className="post-feature" > */}
                         {/* <button name="delete" className="logout-button">Logout</button> */}
                         
                         {/* {    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/follow.png" />} */}
-                        {   <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />}
-		            </div>}
-                    <div className="post-feature">
+                        {/* {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />} */}
+		            {/* </div>} */}
+                    {/* {this.state.isbookmarked && <div className="post-feature" id="following"> */}
                         {/* <button name="delete" className="logout-button">Logout</button> */}
                         
-                        {!this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/unbookmarked.png" />}
-                        {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="bookmarked"   src="./images/bookmark.png" />}
-		            </div>
+                        {/* {    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/follow.png" />} */}
+                        {/* {   <input type="image" onClick={this.onBookmark}    className="bookmarked"   src="./images/following.png" />} */}
+		            {/* </div>} */}
+                    {/* <div className="post-feature"> */}
+                        {/* <button name="delete" className="logout-button">Logout</button> */}
+                        
+                        {/* {!this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="logout-button"   src="./images/unbookmarked.png" />} */}
+                        {/* {this.state.isbookmarked &&    <input type="image" onClick={this.onBookmark}   className="bookmarked"   src="./images/bookmark.png" />} */}
+		            {/* </div> */}
                 
                     </div>
                 </div>
@@ -113,30 +122,17 @@ class PostListitem extends React.Component {
                             <input type="image" onClick={this.onCommentOpen}  className="like-button" width="20px" height="20px" src="./images/comment.png" />
             
                     </div>
-                    {/* <div className="like"> */}
-                            {/* <button className="like-button">Like</button>
-                            {!this.state.isLiked&&<input onClick={this.onLikePost} type="image"  className="like-button" width="20px" height="20px" src="./images/blank_love.png" />}
-                            {this.state.isLiked&&<input type="image"  className="like-button" width="20px" height="20px" src="./images/flower-bouquet.png" />}
-                            <p className="like-count">{this.state.Likes}</p> */}
-                    {/* </div> */}
-
-                    {/* <div className="dislike"> */}
-                            {/* <button className="dislike-button">Dislike</button> */}
-                            {/* <input onClick={this.onDislikePost} type="image"  className="dislike-button" width="20px" height="20px" src="./images/dislike.png" />
-                            {false&&<input type="image"  className="dislike-button" width="20px" height="20px" src="./images/disliked.png" />}
-                            <p className="like-count">{}</p> */}
-                    {/* </div> */}
                 
             </div>
-               <CreateComment PostId={this.props.PostId} onCommentOpen={this.onCommentOpen} />
+               <CreateComment PostId={this.props.PostId} onCommentOpen={this.onCreateComment} />
 
 
-               {this.props.Comment&& <div className="comment-posted">
+               {this.state.commentopen&&this.props.Comment&& <div className="comment-posted">
                    {/* {console.log(this.props.Comment.map((comment)=>(comment)))} */}
                     {filter(this.props.Comment).map((comment)=>{
                         
-                        console.log('Comment----d-------',comment)
-                        return  <CommentListitem key={comment.CommentId+`${this.props.Comment.length}`}  {...comment} CurrentUserId= {this.props.CurrentUserId}  />//key updated because it will update that
+                        // console.log('Comment----d-------',comment)
+                        return  <CommentListitem key={comment.CommentId}  {...comment} CurrentUserId= {this.props.CurrentUserId} onDeleteComment={this.onDeleteComment}  />//key updated because it will update that
                     })}
 				</div>}
 
@@ -158,6 +154,7 @@ const mapDispatchToProps=(dispatch) =>{
         F_DeletePost:(PostId)=>dispatch(F_DeletePost(PostId)),
         F_LikePost:(PostId)=>dispatch(F_LikePost(PostId)),
         F_DislikePost:(PostId)=>dispatch(F_DislikePost(PostId)),
+        F_DeleteComment:(PostId,CommentId)=>dispatch(F_DeleteComment(PostId,CommentId)),
     }   
 }
 

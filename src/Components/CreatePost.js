@@ -9,11 +9,16 @@ class CreatePost extends React.Component {
         this.state={
             Text:props.Post?props.Post.Text:'',
             CreatedAt:props.Post?props.Post.CreatedAt:moment(),
-            error:''
+            error:'',
+            img:{}
         };
 
     }
-
+    handleImageAsFile=async(e)=>{
+        const image = await e.target.files[0]
+        this.setState(()=>({img:image}))
+        // console.log('images........',this.state.img)
+    }
     onTextChange=(event) =>{
         const Text=event.target.value
         if(Text.length>1000){//if u want words less than 10 ... Title.split(" ").length>10||
@@ -39,6 +44,7 @@ class CreatePost extends React.Component {
                 CreatedAt:this.state.CreatedAt.valueOf()
             })
 
+
             this.setState(()=>({Text:''}))
         }
     }
@@ -60,7 +66,7 @@ class CreatePost extends React.Component {
 
 
                 
-
+                    
                     <div className="create-post-textarea">
                         
 						<textarea 
@@ -71,6 +77,7 @@ class CreatePost extends React.Component {
                         >
 						</textarea>
 					</div>
+                    {/* <input type="file" onChange={this.handleImageAsFile} ></input> */}
 
 					<button onClick={this.onSubmit}  className="submit-post">Submit</button>
 

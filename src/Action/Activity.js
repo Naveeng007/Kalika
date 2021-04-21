@@ -20,7 +20,7 @@ export const FCreateActivity=(ActivityData={})=>{
 
       const Activity={Text ,Photo ,CreatedAt,UserId,indx,Title};
       Activity.CreatedAt=moment().valueOf()
-      console.log('from activity action',Activity);
+      // console.log('from activity action',Activity);
       database.ref(`${UserId}/Activity`).push(Activity).then((ref)=>{
        dispatch(CreateActivity({
         ActivityId:ref.key,//check it is post id or not
@@ -38,7 +38,7 @@ export const F_DeleteActivity=(ActivityId={})=>{
   return (dispatch,getState)=>{
     const UserId=getState().auth.uid;
     return database.ref(`${UserId}/Activity/${ActivityId}`).remove().then(()=>{
-      console.log('Activity Deleted',ActivityId);
+      // console.log('Activity Deleted',ActivityId);
       dispatch(DeleteActivity(ActivityId));
     })
   }
@@ -74,7 +74,7 @@ export const F_SetActivity=()=>{
             })
             i++;
           })
-           console.log('from set Activity',Activity)
+          //  console.log('from set Activity',Activity)
            dispatch(SetActivity(Activity))
         })
     }

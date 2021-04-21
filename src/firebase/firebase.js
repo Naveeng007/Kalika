@@ -23,6 +23,6 @@ import "firebase/database";//extra added
 
   const GoogleAuthProvider=new firebase.auth.GoogleAuthProvider();
   
-  console.log('hello from firebaase')
+  // console.log('hello from firebaase')
   
   export {database as default,firebase,GoogleAuthProvider};

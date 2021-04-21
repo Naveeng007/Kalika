@@ -58,7 +58,7 @@ const RenderApp=()=>{
             //     history.push('/dashboard')
             //    })
             // })
-            console.log('111111')
+            // console.log('111111')
             
 
            await  store.dispatch(F_SetUser()).then(async () =>{
@@ -95,7 +95,7 @@ const RenderApp=()=>{
         else
         {
             store.dispatch(logout())
-            console.log('Logged out')
+            // console.log('Logged out')
             RenderApp();
             history.push('/')
             

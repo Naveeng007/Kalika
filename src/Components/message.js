@@ -4,10 +4,10 @@ import Userslistitem from './userslistitem'
 class Message extends React.Component{
     constructor(props){
         super(props)
-        console.log('Messagekkkkkkkkkkkkk ',props)
+        // console.log('Messagekkkkkkkkkkkkk ',props)
     }
     OpenUserChat=(User)=>{
-        console.log('sent user id',User)
+        // console.log('sent user id',User)
         let RoomId=''
         if(User.UserId<this.props.CurrentUserId){
             RoomId=User.UserId+'_'+this.props.CurrentUserId;
@@ -21,9 +21,9 @@ class Message extends React.Component{
         return (
             <div className="Messages">
                      <h2 className="title">Messages</h2>
-                     {console.log('UsersList.........',this.props.Users)}
+                     {/* {console.log('UsersList.........',this.props.Users)} */}
                      {this.props.Users&&this.props.Users.map((user)=>{
-                         console.log('------------------')
+                        //  console.log('------------------')
                          if(user.UserId!=this.props.CurrentUserId)
                         return <Userslistitem key={user.UserId}  User={user} OnUserClick={this.OpenUserChat}/>
                      })}

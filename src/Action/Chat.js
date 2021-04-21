@@ -10,7 +10,7 @@ const CreateUser =(User={})=>({
 
 export const F_CreateUser =(User={})=>{
     return (dispatch,getState)=>{
-        console.log('New User',User)
+        // console.log('New User',User)
         
         database.ref(`Users`).push(User).then((ref)=>{
             dispatch(CreateUser(
@@ -28,7 +28,7 @@ const SetChat =(Messages) =>({
 export const F_SetChat =(RoomId={})=>{
     return (dispatch,getState)=>{
     
-        console.log('.....d.....d.d.d.dd.d',RoomId)
+        // console.log('.....d.....d.d.d.dd.d',RoomId)
         
         database.ref(`Messages/${RoomId}`).once('value').then((snapshot)=>{
             const Chat=[]
@@ -43,7 +43,7 @@ export const F_SetChat =(RoomId={})=>{
                 RoomId,
                 Chat
             }
-            console.log('SetChat',Messages)
+            // console.log('SetChat',Messages)
             dispatch(SetChat(Messages))
         })
     }
@@ -86,7 +86,7 @@ export const F_SetUser =()=>{
                    ...snapshotChild.val()
                 })
             })
-            console.log('setUser',User)
+            // console.log('setUser',User)
             dispatch(SetUser(User))
         })
         

@@ -25,19 +25,20 @@ class CreateComment extends React.Component {
         
     }
 
-    onSubmit=(e)=>{
+    onSubmit=async(e)=>{
         e.preventDefault()
         if(!this.state.Text){
             this.setState(()=>({error:'Title and Text  is required'}))
         }
         else{
             this.setState(()=>({error:''}))//this function must retur
-            this.props.F_CommentPost({
+         await   this.props.F_CommentPost({
                 PostId:this.props.PostId,
                 Comment_Text:this.state.Text
                
             })
             this.setState(()=>({Text:''}))
+            this.props.onCommentOpen();
         }
     }
 

@@ -1,12 +1,12 @@
 import React from 'react'
-import {FCreatePost} from '../Action/Post'
+import {FCreatePost,F_UploadImage} from '../Action/Post'
 import PostListitem from './postlistitem'
 import CreatePost from './CreatePost'
 import filter from '../filter/Post'
 import {connect} from 'react-redux'
 class Post extends React.Component {
     constructor(props) {
-        console.log('Props from ShowPost',props)
+        // console.log('Props from ShowPost',props)
         super(props)
         this.state={
             imgUrl:'',
@@ -30,6 +30,10 @@ class Post extends React.Component {
         this.props.FCreatePost(Post)
     }
 
+    UploadImage=(PostId,image)=>{
+        this.props.F_UploadImage(PostId,image);
+    }
+
  
 
    render() {
@@ -38,7 +42,9 @@ class Post extends React.Component {
                <CreatePost
                 Username={this.state.Username}
                 imgUrl={this.state.imgUrl}
-                onSubmit={this.onSubmit} />
+                onSubmit={this.onSubmit}
+                F_UploadImage={this.UploadImage}
+                 />
 
             {/* {console.log("from post PostListitem showpost",this.props.Post)} */}
 
@@ -56,12 +62,13 @@ class Post extends React.Component {
 const MapDispatchToProps=(dispatch)=>{
     // console.log('dispatch checkpoint')
 return{
+    F_UploadImage:(PostId,image)=>dispatch(F_UploadImage(PostId,image)),
     FCreatePost: (Post)=>dispatch(FCreatePost(Post))//in js any function we treat as an object and hence passing as props
 }  
 };
 
 const mapStateToProps=(state)=>{
-    console.log('States',state)
+    // console.log('States',state)
     // console.log('ShowPost state',state.Post)
     return{
         Post:filter(state.Post),

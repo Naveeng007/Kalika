@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 class Chat extends React.Component{
     constructor(props){
         super(props)
-        console.log('from chat-------',props)
+        // console.log('from chat-------',props)
         this.state={
             error:'',
             Text:''
@@ -14,7 +14,7 @@ class Chat extends React.Component{
     }
 
     componentDidMount() {
-        console.log('users=========================',this.props.F_SetChat(this.props.RoomId))
+        this.props.F_SetChat(this.props.RoomId)
       
     }
 
@@ -44,7 +44,7 @@ class Chat extends React.Component{
     
         //visible Height
         const visibleHeight=$MessageDiv.offsetHeight
-        console.log('Autoscroll',$newMessages)
+        // console.log('Autoscroll',$newMessages)
         //Height of message Container
         const containerHeight=$MessageDiv.scrollHeight
     
@@ -98,9 +98,9 @@ class Chat extends React.Component{
                     <div className="chat-type-box-div">
                         <textarea className="chat-type-box" onChange={this.onChange}  value={this.state.Text}  placeholder="hi">
                         </textarea>
-                        <div className="post-top-delete">
+                        {this.state.Text&&<div className="post-top-delete">
 							<input type="image" onClick={this.SendMessage}  className="username-text" width="20px" height="20px" src="./images/send.png" />
-						</div>
+						</div>}
                     </div>
                 </div>
 

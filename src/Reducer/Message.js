@@ -11,9 +11,6 @@ const  MessageReducer =(state={}, action)=>{
             return {RoomId:state.RoomId,
                     Chat:[...state.Chat,action.Message]
                     };
-                
-                
-            
          default :
             return state
     }

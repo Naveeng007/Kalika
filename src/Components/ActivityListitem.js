@@ -10,7 +10,7 @@ class ActivityListitem extends React.Component {
     }
 
     DeleteActivity=(e)=>{
-        console.log('Delete Activity CLicked',this.props.ActivityId)
+        // console.log('Delete Activity CLicked',this.props.ActivityId)
         this.props.F_DeleteActivity(this.props.ActivityId)
     }
 

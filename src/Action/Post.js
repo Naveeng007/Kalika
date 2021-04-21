@@ -10,32 +10,34 @@ export const CreatePost=(Post={})=>({
 export const FCreatePost=(PostData={})=>{
     return (dispatch,getState)=>{//we are able to return dispatch due to redux-thunk
       const UserId=getState().auth.uid;
-      var imgUrl='';
-      var Email='Your Email';
-      var Username='Your Name';
+      var imgUrl=getState().auth.imgUrl;
+      var Username=getState().auth.DisplayName;
+      var Email=getState().auth.Email
+      // console.log('PostData',PostData)
+      // const UserList=getState().Chat;
 
-      const UserList=getState().Chat;
-
-      UserList.forEach((user)=>{
-        // console.log(user.UserId,'--hi--',UserId)
-        if(user.UserId===UserId){
-            imgUrl=user.imgUrl;
-            Username=user.Username;
-            Email=user.Email;
-        }
-      })
+      // UserList.forEach((user)=>{
+      //   // console.log(user.UserId,'--hi--',UserId)
+      //   if(user.UserId===UserId){
+      //       imgUrl=user.imgUrl;
+      //       Username=user.Username;
+      //       Email=user.Email;
+      //   }
+      // })
 
       const {
         Text = '',//these are default values of parameters
-        Photo='',
+        Photo={},
         CreatedAt = 0,
         Likes=[],
         Dislikes=[],
-        indx=0
+        indx=0,
+        Comment=[]
       }=PostData;
   
-      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx,imgUrl,Username,Email};
+      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx,imgUrl,Username,Email,Comment};
       Post.CreatedAt=moment().valueOf()
+      // console.log('posting.......',Post)
       database.ref(`Posts`).push(Post).then((ref)=>{
        dispatch(CreatePost({
         PostId:ref.key,//check it is post id or not
@@ -44,6 +46,22 @@ export const FCreatePost=(PostData={})=>{
       })
     }
   }
+
+const UploadImage=(ImageId='',PostId='',image)=>({
+  type:'UploadImage',
+  ImageId,
+  image,
+  PostId
+})
+
+export const F_UploadImage=(PostId='',image)=>{
+  return (dispatch,getState)=>{
+    return database.ref(`images/${PostId}`).put(image).then((e)=>{
+        dispatch(UploadImage(e.key,PostId,image));
+    })
+  }
+}
+
 export const DeletePost=(PostId={})=>({
     type:'DeletePost',
     PostId
@@ -53,7 +71,7 @@ export const F_DeletePost=(PostId={})=>{
   return (dispatch,getState)=>{
     // const uid=getState().auth.uid;
     return database.ref(`Posts/${PostId}`).remove().then(()=>{
-      console.log('Post Deleted',PostId);
+      // console.log('Post Deleted',PostId);
       dispatch(DeletePost(PostId));//also check without braces
     })
   }
@@ -78,16 +96,16 @@ export const F_LikePost=(PostId={})=>{
   return (dispatch,getState)=>{
     const UserId=getState().auth.uid;
     return database.ref(`Posts/${PostId}/Likes`).push(UserId).then((e)=>{
-      console.log('Post Liked',e.key);
+      // console.log('Post Liked',e.key);
       dispatch(LikePost(UserId,e.key,PostId));//also check without braces
     })
   }
 }
 
 
-export const CommentPost=(UserId={},LikeId={},PostId={},Comment='',imgUrl={},displayName='',CreatedAt)=>({
+export const CommentPost=(UserId={},CommentId={},PostId={},Comment='',imgUrl={},displayName='',CreatedAt)=>({
   type:'CommentPost',
-  LikeId,
+  CommentId,
   UserId,
   PostId,
   imgUrl,
@@ -110,27 +128,27 @@ return (dispatch,getState)=>{
     displayName,
     CreatedAt
   };
-  console.log('Comment Creating.............',PostId)
+  // console.log('Comment Creating.............',PostId)
   return database.ref(`Posts/${PostId}/Comment`).push(Comment).then((e)=>{
-    console.log('Commented',e.key);
+    // console.log('Commented',e.key);
     dispatch(CommentPost(UserId,e.key,PostId,Comment_Text,imgUrl,displayName,CreatedAt));//also check without braces
   })
 }
 }
 
 
-export const DislikePost=(UserId={},PostId={})=>({
-    type:'DislikePost',
+export const DeleteComment=(CommentId={},PostId={})=>({
+    type:'DeleteComment',
     PostId,
-    UserId
+    CommentId
 })
 
-export const F_DislikePost=(PostId={})=>{
+export const F_DeleteComment=(PostId={},CommentId={})=>{
   return (dispatch,getState)=>{
-    const UserId=getState().auth.uid;
-    return database.ref(`Posts/${PostId}/Dislikes`).Push(UserId).then(()=>{
-      console.log('Post Deleted',PostId);
-      dispatch(DislikePost(UserId,PostId));//also check without braces
+      // console.log('from action',PostId,CommentId)
+    return database.ref(`Posts/${PostId}/Comment/${CommentId}`).set(null).then(()=>{ 
+      // console.log('Comment Deleted',CommentId);
+      dispatch(DeleteComment(CommentId,PostId));//also check without braces
     })
   }
 }
@@ -179,7 +197,7 @@ export const F_SetPost=()=>{
             })
             i++;
           })
-           console.log('from set Post',Post)
+          //  console.log('from set Post',Post)
            dispatch(SetPost(Post))
         })
         
