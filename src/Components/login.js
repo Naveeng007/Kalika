@@ -13,7 +13,7 @@ export const Login=({startLogin})=>(
                 <div className="box-layout-login">
                     <h1>Login</h1>
                     <img className="login-image-logo" src="./images/twitter.png"/>
-                    <p>Welcome to Prakriti</p>
+                    <p>Welcome to Kannect</p>
                     <button className="login-button" onClick={startLogin}>Login </button>
                 </div>
             </div>

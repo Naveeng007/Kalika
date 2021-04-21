@@ -16,16 +16,16 @@ class Navbar extends React.Component {
                     <img src="./images/Prakriti.png" height="30px" /> 
 		        </div>
         <div className="navbar-right">
-            <div className="Logout">
+            {/* <div className="Logout"> */}
 			        {/* <button name="delete" className="logout-button">Logout</button> */}
                     
-                    <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/bookmarked.png" />
-		    </div>
-            <div className="Logout">
+                    {/* <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/bookmarked.png" /> */}
+		    {/* </div> */}
+            {/* <div className="Logout"> */}
 			        {/* <button name="delete" className="logout-button">Logout</button> */}
                     
-                    <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/notification.png" />
-		    </div>
+                    {/* <input type="image"   className="bookmarked" width="20px" height="20px" src="./images/notification.png" /> */}
+		    {/* </div> */}
 		        <div className="Logout">
 			        {/* <button name="delete" className="logout-button">Logout</button> */}
                     

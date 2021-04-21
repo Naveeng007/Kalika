@@ -20,7 +20,7 @@ class Userslistitem extends React.Component {
                        
                         <div className="user-message-info" onClick={this.Cliked}>
                             <p className='user'>{this.props.User.Username }</p>
-                            <p className='last-message'>hi there!!</p>
+                            {/* <p className='last-message'>hi there!!</p> */}
                         </div>  
             </div>
         )
