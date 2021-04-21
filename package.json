@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --watch ",
-    "start": "node server/server.js"
+    "build:prod": "webpack  --env production",
+   
+    "start": "node server/server.js",
+    "heroku-postbuild": "yarn run build:prod"
   },
   "repository": {
     "type": "git",
