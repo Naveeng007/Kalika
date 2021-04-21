@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:dev": "webpack --watch ",
     "build:prod": "webpack  --env production",
-   
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
   },
