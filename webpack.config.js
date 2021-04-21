@@ -41,11 +41,11 @@ module.exports=(env)=>{
             ] 
         }]
     },
-    mode: 'development',
+    mode: 'production',
 
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')//use development fro development puposes
+            'process.env.NODE_ENV': JSON.stringify('production')//use development fro development puposes
         }),
         // CSSExtract
     ],
