@@ -4,7 +4,20 @@ var webpack = require('webpack');
 // import webpack from 'webpack'
 
 module.exports=(env)=>{
-    console.log(env)
+    const type=env.production===undefined?'development':'production';
+    var devtooltype='eval-cheap-module-source-map'
+    var performanceType={
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
+    if(type==='production')
+      {
+        devtooltype=false;
+        performanceType=false;
+      }  
+
+    console.log(type)
  return   {
     entry: './src/app.js',
     output: {
@@ -41,16 +54,17 @@ module.exports=(env)=>{
             ] 
         }]
     },
-    mode: 'production',
-
+    performance: false,
+    mode: type,
+    // development,production
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')//use development fro development puposes
+            'process.env.NODE_ENV': JSON.stringify(type)//use development fro development puposes
         }),
         // CSSExtract
     ],
     // devtool:isProduction?'inline-source-map':'eval-cheap-module-source-map',
-     devtool:'eval-cheap-module-source-map',
+     devtool:devtooltype,
     // devtool:false //use it for production
     
     // devtool: 'inline-source-map',i have seen on stackoverflow for better production

@@ -5,6 +5,9 @@ class Message extends React.Component{
     constructor(props){
         super(props)
         // console.log('Messagekkkkkkkkkkkkk ',props)
+        this.state={
+            isSearchActive:false
+        }
     }
     OpenUserChat=(User)=>{
         // console.log('sent user id',User)
@@ -20,7 +23,9 @@ class Message extends React.Component{
     render() {
         return (
             <div className="Messages">
-                     <h2 className="title">Messages</h2>
+                     {!this.state.isSearchActive&&<h2 className="title">Users</h2>}
+                     
+                     {/* {this.state.isSearchActive&&<input type="text" ></input>} */}
                      {/* {console.log('UsersList.........',this.props.Users)} */}
                      {this.props.Users&&this.props.Users.map((user)=>{
                         //  console.log('------------------')

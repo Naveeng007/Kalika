@@ -13,7 +13,7 @@ class Navbar extends React.Component {
                 <div className="logo">
                     {/* <img src={fre} style="height: 40px;width: 40px;"> </img> */}
                     <img src="./images/twitter.png" width="40px" height="40px" /> 
-                    <img src="./images/Prakriti.png" height="30px" /> 
+                    <img src="./images/Prakriti.png" height="40px" /> 
 		        </div>
         <div className="navbar-right">
             {/* <div className="Logout"> */}

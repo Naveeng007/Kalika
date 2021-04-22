@@ -15,8 +15,8 @@ class Chatlistitem extends React.Component {
             <div >
                     
             <div className={`user${this.state.UserNumber}-message`}>         
-            <p > {this.props.Message}</p>
-            <h5>{format(new Date(this.props.CreatedAt), 'PPPP') }</h5>
+            <h5 > {this.props.Message}</h5>
+            <h6>{format(new Date(this.props.CreatedAt), 'PPPP') }</h6>
             </div>
             </div>
         )

@@ -40,7 +40,6 @@ const RenderApp=()=>{
 }
 
 
-
 // ReactDOM.render(jsx, document.getElementById('app')
 //     )
     firebase.auth().onAuthStateChanged(async (user)=>{
@@ -49,17 +48,6 @@ const RenderApp=()=>{
             // console.log("........................loged in",user)
             
           await  store.dispatch(login(user.uid,user.photoURL,user.email,user.displayName))
-            // RenderApp();
-            // history.push('/dashboard')
-           
-
-            // store.dispatch(F_SetPost()).then(() =>{
-            //    store.dispatch(F_SetActivity()).then(() =>{
-            //     RenderApp();
-            //     history.push('/dashboard')
-            //    })
-            // })
-            // console.log('111111')
             
 
            await  store.dispatch(F_SetUser()).then(async () =>{

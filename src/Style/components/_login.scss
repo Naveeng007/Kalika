@@ -50,6 +50,7 @@
     color: white;
     background-color: #5837FC;
     border-radius: 20px;
+    outline: none;
 }
 
 .login-background{
@@ -86,4 +87,18 @@
 .login-image-logo{
     height: 150px;
     width:150px;
+}
+
+.loading-button{
+    width: 200px;
+    height: 60px;
+    align-self: center;
+    // cursor: pointer;
+    border:none;
+    // color: white;
+    // background-color: #5837FC;
+    border-radius: 20px;
+    outline: none;
+    
+    object-fit: cover;
 }

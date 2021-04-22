@@ -1,8 +1,19 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {startLogin} from '../Action/auth'
-export const Login=({startLogin})=>(
-    <div className="login-background">
+export class Login extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            cliked:true
+        }
+    }
+    onClick=() => {
+        this.props.startLogin()
+        this.setState(()=>({cliked:false}))
+    }
+    render() {
+        return(<div className="login-background">
         <div className="login-box">
 
             <div className="image-box">
@@ -14,14 +25,18 @@ export const Login=({startLogin})=>(
                     <h1>Login</h1>
                     <img className="login-image-logo" src="./images/twitter.png"/>
                     <p>Welcome to Kannect</p>
-                    <button className="login-button" onClick={startLogin}>Login </button>
+                    
+                    {this.state.cliked&&<button className="login-button" onClick={this.onClick}>Login </button>}
+                    {!this.state.cliked&&<img className="loading-button" src="./images/preview.gif"/>}
                 </div>
             </div>
         </div>
         
-    </div>
+    </div>)
+    }
+}
     
-)
+
 
 const MapDispatchToProps=(dispatch)=>({
     startLogin:()=>dispatch(startLogin())

@@ -1,7 +1,7 @@
 .chat{
         /*background-color:#f0f2f5;*/
         background-color:white;
-        margin-top: 10px;
+        // margin-bottom: 10px;
         
         display: flex;
         flex-direction: column;
@@ -10,11 +10,14 @@
         /*justify-content: center;*/
         // border:10px solid yellow;
         overflow: scroll;
-        height: 100%;
-       
+        height: 99%;
+        margin: 10px 0px 10px 0px;
+        margin-right: 5px;
         /*border: 2px solid blue;*/
 }
-
+// *{
+//     outline:1px solid black;
+// }
 .chat-type-box{
     resize:none;
     height:40px;
@@ -53,7 +56,7 @@
     align-items:flex-start;
     margin-top:5px;
     
-    p{
+    h5{
         background-color:#0CAFFF;
         margin-bottom: 0px;
         // overflow-wrap: break-word;
@@ -61,7 +64,7 @@
         border-radius:10px;
         
     }
-    h5{
+    h6{
         margin-top: 4px;
         // align-self: flex-end;
         color:rgb(1,1,1,0.5);
@@ -79,8 +82,12 @@
 }
 
 .chat-type-box-div{
+    textarea{
+        height: 10px;
+        width:90%;
+    }
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
 }
 
 .user2-message{
@@ -94,27 +101,26 @@
     // justify-content:right;
     align-items:flex-end;
     margin-top:5px;
-    p{
+    h5{
         background-color:$background;
         margin-bottom: 0px;
         padding: 5px;
         border-radius:10px;
     }
-    h5{
+    h6{
         margin-top: 0px;
         align-self: flex-end;
         color:rgb(1,1,1,0.5);
         margin-bottom: 0px;
     }
 
-
-   
-    
-    
-    
 }
 
 .Chat-message{
     display: flex;
     flex-wrap: wrap;
+}
+
+.send-message{
+    margin-top:10px;
 }

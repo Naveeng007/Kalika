@@ -22,6 +22,7 @@ class Chat extends React.Component{
         const Text=event.target.value
         if(Text.length==0){//if u want words less than 10 ... Title.split(" ").length>10||
             this.setState(()=>({error:'Message can\'t be empty'}))
+            this.setState(()=>({Text:''}))
         }
         else
         {
@@ -74,8 +75,6 @@ class Chat extends React.Component{
 						<div className="post-top-username-div">
                             <img className="post-top-photo" src={this.props.User.imgUrl}/>
 							<p className="username-text">{this.props.User.Username}</p>
-							
-						
 						</div>
 
                         <div className="post-top-delete">
@@ -99,8 +98,10 @@ class Chat extends React.Component{
                         <textarea className="chat-type-box" onChange={this.onChange}  value={this.state.Text}  placeholder="hi">
                         </textarea>
                         {this.state.Text&&<div className="post-top-delete">
-							<input type="image" onClick={this.SendMessage}  className="username-text" width="20px" height="20px" src="./images/send.png" />
+							<input type="image" onClick={this.SendMessage}  className="send-message" width="20px" height="20px" src="./images/sent.png" />
 						</div>}
+
+                        
                     </div>
                 </div>
 
