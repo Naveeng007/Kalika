@@ -18,8 +18,8 @@ class CreateActivity extends React.Component {
     onTextChange=(event) =>{
         const Text=event.target.value
 
-        if(Text.length>300){//if u want words less than 10 ... Title.split(" ").length>10||
-            this.setState(()=>({error:'Text must contain less than 300 characters'}))
+        if(Text.length>500){//if u want words less than 10 ... Title.split(" ").length>10||
+            this.setState(()=>({error:'Text must contain less than 500 characters'}))
         }
         else
         {
