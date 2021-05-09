@@ -26,7 +26,8 @@ export const FCreatePost=(PostData={})=>{
       // })
 
       const {
-        Text = '',//these are default values of parameters
+        Text = '',//these are default values of parameters,
+        Code='',
         Photo={},
         CreatedAt = 0,
         Likes=[],
@@ -35,10 +36,10 @@ export const FCreatePost=(PostData={})=>{
         Comment=[]
       }=PostData;
   
-      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx,imgUrl,Username,Email,Comment};
+      const Post={Text ,Photo ,CreatedAt,UserId,Likes,Dislikes,indx,imgUrl,Username,Email,Comment,Code};
       Post.CreatedAt=moment().valueOf()
       // console.log('posting.......',Post)
-      database.ref(`Posts`).push(Post).then((ref)=>{
+      database.ref(`Posts`).put(Post).then((ref)=>{
        dispatch(CreatePost({
         PostId:ref.key,//check it is post id or not
         ...Post,

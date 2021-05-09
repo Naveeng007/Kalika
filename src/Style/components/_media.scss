@@ -1,0 +1,29 @@
+@media screen and (max-width:740px){
+    // *{
+    //     outline:10px solid blue;
+    // }
+
+    .Whole_page{
+        display: flex;
+        // justify-content:space-between;
+        justify-content:center;
+        height: 90%;
+        // border: 13px solid black;
+     
+     }
+
+     .page{
+        background-color: #f0f2f5;
+        display: flex;
+        width:100%;
+        margin-top: 2px;
+        flex-direction: column;
+        overflow: scroll;
+        height: 100%;
+     }
+
+
+
+
+    //  login
+}

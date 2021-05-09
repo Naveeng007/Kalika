@@ -2,9 +2,9 @@ import history from '../history'
 import React from 'react'
 
 import { Router } from 'react-router';
-import ExpenseDashboard from  '../Components/dashboard'
+import ExpenseDashboard from  '../Components/Dashboard/dashboard'
 import { Route,Switch} from 'react-router-dom'
-import Login from '../Components/login'
+import Login from '../Components/Auth/login'
 const AppRouter=()=>(
     <Router history={history}>
         {/* changed from browserhistory to upper whole */}
